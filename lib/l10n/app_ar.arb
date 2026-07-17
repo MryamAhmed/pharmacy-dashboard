@@ -1,0 +1,36 @@
+{
+  "@@locale": "ar",
+
+  "appTitle": "صيدلية",
+
+  "loginTitle": "مرحبًا بعودتك",
+  "loginSubtitle": "سجّل الدخول للمتابعة",
+  "loginEmailHint": "أدخل بريدك الإلكتروني",
+  "loginPasswordHint": "أدخل كلمة المرور",
+  "loginSubmitButton": "تسجيل الدخول",
+
+  "validationFieldRequired": "هذا الحقل مطلوب",
+  "validationInvalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
+  "validationPasswordMismatch": "كلمتا المرور غير متطابقتين",
+
+  "errorInvalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+  "errorEmailAlreadyRegistered": "هذا البريد الإلكتروني مسجل مسبقًا",
+  "errorSocialSignInFailed": "تعذر تسجيل الدخول. حاول مرة أخرى.",
+  "errorNetwork": "خطأ في الاتصال بالشبكة — يرجى التحقق من اتصالك والمحاولة مرة أخرى",
+  "errorGeneric": "حدث خطأ ما. حاول مرة أخرى.",
+  "forgotPasswordEmailNotRegistered": "هذا البريد الإلكتروني غير مسجل",
+
+  "comingSoon": "قريبًا",
+
+  "homeTitle": "الرئيسية",
+  "pharmacyManagementTitle": "إدارة الصيدلية",
+  "rateTitle": "التقييم",
+  "userManagementTitle": "إدارة المستخدمين",
+
+  "navHome": "الرئيسية",
+  "navPharmacy": "الصيدلية",
+  "navRate": "التقييم",
+  "navUsers": "المستخدمون",
+
+  "searchHint": "بحث"
+}

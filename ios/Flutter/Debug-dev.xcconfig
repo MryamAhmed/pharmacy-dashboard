@@ -1,0 +1,3 @@
+#include "Debug.xcconfig"
+FLUTTER_TARGET=lib/main_dev.dart
+APP_DISPLAY_NAME=Zido World (Dev)

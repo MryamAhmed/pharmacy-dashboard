@@ -1,0 +1,95 @@
+name: pharmacy_app
+description: "Pharmacy — Flutter app."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State management
+  flutter_bloc: ^9.1.1
+
+  # Dependency injection
+  get_it: ^9.2.1
+
+  # Routing
+  go_router: ^17.2.1
+
+  # Networking
+  dio: ^5.9.2
+  pretty_dio_logger: ^1.4.0
+
+  # Functional error handling
+  fpdart: ^1.2.0
+
+  # Storage
+  flutter_secure_storage: ^10.0.0
+  shared_preferences: ^2.5.5
+
+  # UI helpers
+  auto_size_text: ^3.0.0
+  cached_network_image: ^3.4.1
+  cupertino_icons: ^1.0.8
+  dotted_border: ^2.1.0
+  flutter_screenutil: ^5.9.3
+  gap: ^3.0.1
+  snackbar_flutter: ^1.0.2
+  freezed_annotation: ^3.1.0
+  crypto: ^3.0.3
+
+  flutter_native_splash: ^2.4.7
+  flutter_svg: ^2.2.1
+  
+  injectable: ^2.7.1+4
+  intl: ^0.20.2
+
+
+
+  url_launcher: ^6.3.1
+  url_strategy: ^0.3.0
+
+dev_dependencies:
+  bloc_test: ^10.0.0
+  build_runner: ^2.13.1
+  flutter_gen_runner: ^5.14.0
+  flutter_launcher_icons: ^0.14.4
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+  freezed: ^3.2.3
+  injectable_generator: ^2.6.2
+  mocktail: ^1.0.4
+
+# Run `dart run flutter_launcher_icons` after changing the source icon.
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo.png"
+  adaptive_icon_background: "#167986"
+  adaptive_icon_foreground: "assets/images/logo.png"
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/images/backgrounds/
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  background_image: assets/images/logo.png
+  fullscreen: true
+  android_gravity: center
+  ios_content_mode: center
+  android_12:
+    color: "#FFFFFF"
+    background_image: assets/images/logo.png
+    icon_background_color: "#FFFFFF"

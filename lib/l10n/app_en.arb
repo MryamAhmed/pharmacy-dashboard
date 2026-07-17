@@ -1,0 +1,42 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Pharmacy",
+  "@appTitle": {
+    "description": "The display title for MaterialApp"
+  },
+
+  "loginTitle": "Welcome back",
+  "loginSubtitle": "Sign in to continue",
+  "loginEmailHint": "Enter your email",
+  "loginPasswordHint": "Enter your password",
+  "loginSubmitButton": "Log in",
+
+  "validationFieldRequired": "This field is required",
+  "validationInvalidEmail": "Please enter a valid email address",
+  "validationPasswordMismatch": "Passwords do not match",
+
+  "errorInvalidCredentials": "Invalid email or password",
+  "errorEmailAlreadyRegistered": "This email is already registered",
+  "errorSocialSignInFailed": "Could not sign in. Please try again.",
+  "errorNetwork": "Network connection error — please check your connection and try again",
+  "errorGeneric": "Something went wrong. Please try again.",
+  "forgotPasswordEmailNotRegistered": "This email is not registered",
+
+  "comingSoon": "Coming soon",
+  "@comingSoon": {
+    "description": "Generic placeholder shown on screens/tabs that aren't built yet"
+  },
+
+  "homeTitle": "Home",
+  "pharmacyManagementTitle": "Pharmacy Management",
+  "rateTitle": "Rate",
+  "userManagementTitle": "User Management",
+
+  "navHome": "Home",
+  "navPharmacy": "Pharmacy",
+  "navRate": "Rate",
+  "navUsers": "Users",
+
+  "searchHint": "Search"
+}

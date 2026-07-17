@@ -1,0 +1,28 @@
+analyzer:
+  errors:
+    # Turn on the specified rules to generate errors
+    prefer_const_constructors: error
+    prefer_const_literals_to_create_immutables: error
+    avoid_print: error
+    always_declare_return_types: error
+    prefer_final_locals: error
+    use_function_type_syntax_for_parameters: error
+    curly_braces_in_flow_control_structures: error
+    avoid_multiple_declarations_per_line: error
+    avoid_setters_without_getters: error
+    unused_import: error
+    unused_local_variable: error
+    invalid_null_aware_operator: error
+
+linter:
+  rules:
+    # Include the specified lint rules
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+    avoid_print: true
+    always_declare_return_types: true
+    prefer_final_locals: true
+    use_function_type_syntax_for_parameters: true
+    curly_braces_in_flow_control_structures: true
+    avoid_multiple_declarations_per_line: true
+    avoid_setters_without_getters: true
