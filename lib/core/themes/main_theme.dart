@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // Project imports:
 import '../../gen/fonts.gen.dart';
+import '../constants/app_values.dart';
 import 'app_colors.dart';
 import 'app_text_style.dart';
 
@@ -23,30 +24,35 @@ class MainTheme {
     // ---------- Per-mode palette ----------
     // Surfaces, foregrounds, and input fills branch on brightness here so
     // every consumer of `Theme.of(context)` picks up the right colour.
-    final Color scaffoldBackground =
-        isDark ? const Color(0xFF101218) : AppColors.mainWhiteColor;
-    final Color surface =
-        isDark ? const Color(0xFF181B22) : AppColors.mainWhiteColor;
-    final Color onSurface =
-        isDark ? AppColors.textWhite : AppColors.textBlack;
-    final Color onSurfaceMuted =
-        isDark ? const Color(0xFFA4ADBD) : AppColors.textGray;
-    final Color outline =
-        isDark ? const Color(0xFF2A2F3A) : AppColors.textFieldBorder;
-    final Color inputFill =
-        isDark ? const Color(0xFF1E222B) : AppColors.mainWhiteColor;
+    final Color scaffoldBackground = isDark
+        ? const Color(0xFF101218)
+        : AppColors.mainWhiteColor;
+    final Color surface = isDark
+        ? const Color(0xFF181B22)
+        : AppColors.mainWhiteColor;
+    final Color onSurface = isDark ? AppColors.textWhite : AppColors.textBlack;
+    final Color onSurfaceMuted = isDark
+        ? const Color(0xFFA4ADBD)
+        : AppColors.textGray;
+    final Color outline = isDark
+        ? const Color(0xFF2A2F3A)
+        : AppColors.textFieldBorder;
+    final Color inputFill = isDark
+        ? const Color(0xFF1E222B)
+        : AppColors.mainWhiteColor;
 
-    final colorScheme = ColorScheme.fromSeed(
-      seedColor: AppColors.primaryColor,
-      brightness: brightness,
-    ).copyWith(
-      error: AppColors.mainRedColor,
-      onError: AppColors.textWhite,
-      surface: surface,
-      onSurface: onSurface,
-      onSurfaceVariant: onSurfaceMuted,
-      outline: outline,
-    );
+    final colorScheme =
+        ColorScheme.fromSeed(
+          seedColor: AppColors.primaryColor,
+          brightness: brightness,
+        ).copyWith(
+          error: AppColors.mainRedColor,
+          onError: AppColors.textWhite,
+          surface: surface,
+          onSurface: onSurface,
+          onSurfaceVariant: onSurfaceMuted,
+          outline: outline,
+        );
 
     return ThemeData(
       brightness: brightness,
@@ -56,9 +62,7 @@ class MainTheme {
 
       // Drives DefaultTextStyle across the app for any [Text]/[AppText] that
       // doesn't go through [AppTextStyles].
-      textTheme: Typography.material2021(
-        platform: TargetPlatform.android,
-      )
+      textTheme: Typography.material2021(platform: TargetPlatform.android)
           .geometryThemeFor(ScriptCategory.englishLike)
           .apply(
             fontFamily: FontFamily.dMSans,
@@ -73,8 +77,7 @@ class MainTheme {
         shadowColor: Colors.transparent,
         foregroundColor: onSurface,
         elevation: 0,
-        centerTitle: true,
-        toolbarHeight: 70.h,
+        toolbarHeight: AppBarWidgetDimens.height.h,
         iconTheme: IconThemeData(color: onSurface),
         titleTextStyle: AppTextStyles.medium18.copyWith(color: onSurface),
         systemOverlayStyle: isDark

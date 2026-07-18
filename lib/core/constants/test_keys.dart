@@ -16,6 +16,11 @@ class TestKeys {
   // ---------- Shared — search field (AppSearchWidget) ----------
   static const String appSearchField = 'appSearchField';
 
+  // ---------- Shared — app bar (AppBarWidget) ----------
+  static const String appBarWidget = 'appBarWidget';
+  static const String appBarBackButton = 'appBarBackButton';
+  static const String appBarTitle = 'appBarTitle';
+
   // ---------- Splash ----------
   static const String splashPage = 'splashPage';
   static const String splashLogo = 'splashLogo';

@@ -137,3 +137,14 @@ class SplashDimens {
   /// Width of the centered logo over the splash background.
   static const double logoWidth = 140;
 }
+
+/// Dimensions for the shared [AppBarWidget].
+class AppBarWidgetDimens {
+  AppBarWidgetDimens._();
+
+  /// Toolbar height. Matches [MainTheme]'s `AppBarTheme.toolbarHeight`.
+  static const double height = 70;
+
+  /// Width/height of the back icon.
+  static const double backIconSize = 24;
+}

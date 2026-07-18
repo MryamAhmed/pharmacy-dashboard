@@ -75,6 +75,10 @@ flutter_launcher_icons:
   adaptive_icon_background: "#167986"
   adaptive_icon_foreground: "assets/images/logo.png"
 
+flutter_gen:
+  integrations:
+    flutter_svg: true
+
 flutter:
   generate: true
   uses-material-design: true
@@ -82,6 +86,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/backgrounds/
+    - assets/images/icons/
 
   fonts:
     - family: DMSans
