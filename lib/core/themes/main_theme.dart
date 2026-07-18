@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // Project imports:
 import '../../gen/fonts.gen.dart';
+import '../constants/app_values.dart';
 import 'app_colors.dart';
 import 'app_text_style.dart';
 
@@ -76,8 +77,7 @@ class MainTheme {
         shadowColor: Colors.transparent,
         foregroundColor: onSurface,
         elevation: 0,
-        centerTitle: true,
-        toolbarHeight: 70.h,
+        toolbarHeight: AppBarWidgetDimens.height.h,
         iconTheme: IconThemeData(color: onSurface),
         titleTextStyle: AppTextStyles.medium18.copyWith(color: onSurface),
         systemOverlayStyle: isDark

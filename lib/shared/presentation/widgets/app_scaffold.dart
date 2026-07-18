@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/test_keys.dart';
 import '../../../core/extensions/build_context_localizations.dart';
 import '../../../core/utils/responsive.dart';
+import 'app_bar_widget.dart';
 
 /// Shared screen root.
 ///
@@ -14,16 +15,22 @@ import '../../../core/utils/responsive.dart';
 /// Provides a single, minimal responsive switch (via [Responsive.isWeb]):
 /// [mobileBody] renders below the web breakpoint and [webBody] (when
 /// supplied) renders at/above it — mirroring the pattern already covered by
-/// [TestKeys.responsiveMobile] / [TestKeys.responsiveWeb]. Everything else
-/// (app bar, background, bottom navigation, FAB) is passed straight through
-/// to the underlying [Scaffold] so feature screens stay in control of their
-/// own chrome.
+/// [TestKeys.responsiveMobile] / [TestKeys.responsiveWeb]. The app bar is
+/// built from [showAppBar]/[appBarTitle]/... via the shared [AppBarWidget] —
+/// screens never build their own [AppBar]. Everything else (background,
+/// bottom navigation, FAB) is passed straight through to the underlying
+/// [Scaffold] so feature screens stay in control of their own chrome.
 class AppScaffold extends StatelessWidget {
   const AppScaffold({
     required Key key,
     required this.mobileBody,
     this.webBody,
-    this.appBar,
+    this.showAppBar = false,
+    this.appBarTitle,
+    this.appBarTitleStyle,
+    this.showBackButton = true,
+    this.onBackTap,
+    this.appBarBackgroundColor,
     this.bottomNavigationBar,
     this.floatingActionButton,
     this.backgroundColor,
@@ -38,7 +45,25 @@ class AppScaffold extends StatelessWidget {
   /// omitted, so screens that haven't built a web layout yet still work.
   final Widget? webBody;
 
-  final PreferredSizeWidget? appBar;
+  /// Whether to render the shared [AppBarWidget] at all.
+  final bool showAppBar;
+
+  /// Title forwarded to [AppBarWidget.title]. Required when [showAppBar] is
+  /// true.
+  final String? appBarTitle;
+
+  /// Forwarded to [AppBarWidget.titleStyle].
+  final TextStyle? appBarTitleStyle;
+
+  /// Forwarded to [AppBarWidget.showBackButton].
+  final bool showBackButton;
+
+  /// Forwarded to [AppBarWidget.onBackTap].
+  final VoidCallback? onBackTap;
+
+  /// Forwarded to [AppBarWidget.backgroundColor].
+  final Color? appBarBackgroundColor;
+
   final Widget? bottomNavigationBar;
   final Widget? floatingActionButton;
   final Color? backgroundColor;
@@ -59,10 +84,21 @@ class AppScaffold extends StatelessWidget {
             child: mobileBody,
           );
 
+    final PreferredSizeWidget? resolvedAppBar = showAppBar
+        ? AppBarWidget(
+            key: const Key(TestKeys.appBarWidget),
+            title: appBarTitle ?? '',
+            titleStyle: appBarTitleStyle,
+            showBackButton: showBackButton,
+            onBackTap: onBackTap,
+            backgroundColor: appBarBackgroundColor,
+          )
+        : null;
+
     return Scaffold(
       key: key,
       backgroundColor: backgroundColor,
-      appBar: appBar,
+      appBar: resolvedAppBar,
       bottomNavigationBar: bottomNavigationBar,
       floatingActionButton: floatingActionButton,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
