@@ -36,6 +36,10 @@ class AppColors {
   // ---------- Text ----------
   static const Color blackColor = Color(0xFF000000);
   static const Color textBlack = Color(0xFF131720);
+
+  /// Default color for [AppTextStyles]' unsuffixed variants (e.g. `regular14`,
+  /// `bold24`) — baked in as their default instead of adapting to the theme.
+  static const Color titleColor = Color(0xFF404040);
   static const Color textDarkGray = Color(0xFF333333);
   static const Color textGray = Color(0xFF627084);
   static const Color textWhite = Colors.white;

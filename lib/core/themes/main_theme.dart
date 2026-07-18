@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // Project imports:
+import '../../gen/fonts.gen.dart';
 import 'app_colors.dart';
 import 'app_text_style.dart';
 
@@ -51,14 +52,16 @@ class MainTheme {
       brightness: brightness,
       colorScheme: colorScheme,
       scaffoldBackgroundColor: scaffoldBackground,
+      fontFamily: FontFamily.dMSans,
 
-      // Drives DefaultTextStyle across the app — text styles without an
-      // explicit colour (e.g. `AppTextStyles.bold24`) inherit from here.
+      // Drives DefaultTextStyle across the app for any [Text]/[AppText] that
+      // doesn't go through [AppTextStyles].
       textTheme: Typography.material2021(
         platform: TargetPlatform.android,
       )
           .geometryThemeFor(ScriptCategory.englishLike)
           .apply(
+            fontFamily: FontFamily.dMSans,
             bodyColor: onSurface,
             displayColor: onSurface,
             decorationColor: onSurface,

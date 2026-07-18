@@ -8,15 +8,12 @@ import 'app_colors.dart';
 /// All text styles used in the app.
 ///
 /// **Convention:**
-///   * Styles **without** a colour suffix (e.g. `regular14`, `bold24`) leave
-///     `color` unset, so the rendered colour is inherited from the surrounding
-///     [DefaultTextStyle] — which Flutter derives from `Theme.textTheme`. This
-///     means they automatically swap between dark text on a light theme and
-///     light text on a dark theme.
+///   * Styles **without** a colour suffix (e.g. `regular14`, `bold24`) bake in
+///     [AppColors.titleColor] as their default colour — they do NOT adapt to
+///     the active theme.
 ///   * Styles **with** a colour suffix (e.g. `regular14Gray`, `medium16White`)
-///     bake that specific colour in and do NOT adapt to the active theme.
-///     Use them only when the colour is intentional (secondary text, errors,
-///     text on a colored button, etc.).
+///     bake in that specific colour instead. Use them only when the colour is
+///     intentional (secondary text, errors, text on a colored button, etc.).
 class AppTextStyles {
   AppTextStyles._();
 
@@ -28,7 +25,7 @@ class AppTextStyles {
   }) => TextStyle(
     fontSize: fontSize.spMin,
     fontWeight: weight,
-    color: color,
+    color: color ?? AppColors.titleColor,
     decoration: isUnderline ? TextDecoration.underline : null,
   );
 
