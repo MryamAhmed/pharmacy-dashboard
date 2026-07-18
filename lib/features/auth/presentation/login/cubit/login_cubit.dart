@@ -9,6 +9,7 @@ import '../../../../../core/constants/app_error_codes.dart';
 import '../../../../../core/extensions/go_router_navigation_x.dart';
 import '../../../../../core/router/app_routes.dart';
 import '../../../../../core/utils/app_validations.dart';
+import '../../../../../shared/domain/entities/app_error.dart';
 import 'login_state.dart';
 
 /// Drives the login form.
@@ -28,18 +29,26 @@ class LoginCubit extends Cubit<LoginState> {
   final TextEditingController emailController;
   final TextEditingController passwordController;
 
-  void onEmailEdited() => emit(state.copyWith(emailFieldError: null));
+  void onEmailEdited() =>
+      emit(state.copyWith(emailFieldError: null, error: null));
 
-  void onPasswordEdited() => emit(state.copyWith(passwordFieldError: null));
+  void onPasswordEdited() =>
+      emit(state.copyWith(passwordFieldError: null, error: null));
 
   void toggleObscurePassword() =>
       emit(state.copyWith(obscurePassword: !state.obscurePassword));
+
+  void toggleRememberMe() =>
+      emit(state.copyWith(rememberMe: !state.rememberMe));
 
   /// Validates the form and, when valid, simulates a sign-in then routes home.
   ///
   /// Field errors are emitted as [AppErrorCodes] constants, not display
   /// strings — the screen resolves them to localized text via `context.l10n`
-  /// since a Cubit has no `BuildContext`.
+  /// since a Cubit has no `BuildContext`. Any failure during the sign-in
+  /// itself (network, unexpected exception) is caught here and surfaced as a
+  /// general [AppError] on [LoginState.error], matching [HomeTabState]'s
+  /// error-handling shape.
   Future<void> submit() async {
     final email = emailController.text.trim();
     final password = passwordController.text;
@@ -51,6 +60,7 @@ class LoginCubit extends Cubit<LoginState> {
       state.copyWith(
         emailFieldError: emailError,
         passwordFieldError: passwordError,
+        error: null,
       ),
     );
 
@@ -58,14 +68,24 @@ class LoginCubit extends Cubit<LoginState> {
 
     emit(state.copyWith(isSubmitting: true));
 
-    // Simulated network latency — replace with a real auth call.
-    await Future<void>.delayed(const Duration(milliseconds: 600));
-    if (isClosed) return;
+    try {
+      // Simulated network latency — replace with a real auth call.
+      await Future<void>.delayed(const Duration(milliseconds: 600));
+      if (isClosed) return;
 
-    emit(state.copyWith(isSubmitting: false));
-    // Drops login (and any prior auth screens) from history so the back
-    // button can't return to them once signed in.
-    _goRouter.clearStackAndGo(AppRouteNames.home);
+      emit(state.copyWith(isSubmitting: false));
+      // Drops login (and any prior auth screens) from history so the back
+      // button can't return to them once signed in.
+      _goRouter.clearStackAndGo(AppRouteNames.home);
+    } catch (_) {
+      if (isClosed) return;
+      emit(
+        state.copyWith(
+          isSubmitting: false,
+          error: const AppError(isNetwork: true),
+        ),
+      );
+    }
   }
 
   String? _validateEmail(String email) {

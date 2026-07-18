@@ -54,4 +54,10 @@ class AppColors {
   // ---------- Button states ----------
   static const Color disabledButtonColor = Color(0xFFE7E8EE);
   static const Color disabledButtonTextColor = Color(0xFFC5C6E4);
+
+  // ---------- appscaffold background ----------
+  static const Color screenBackground = Color(0xFFF9F9F9);
+
+  // ---------- styles color ----------
+  static const Color hintStyleColor = Color(0xFF8C8C8C);
 }

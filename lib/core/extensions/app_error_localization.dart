@@ -45,3 +45,17 @@ extension AppErrorX on AppError {
     return l10n.errorGeneric;
   }
 }
+
+/// Resolves a bare field-error **code** — as stored directly on a Cubit's
+/// state (e.g. `LoginState.emailFieldError`) rather than wrapped in a full
+/// [AppError] — to localized display text.
+///
+/// Returns `null` when there's no error, so callers can pass it straight
+/// through to a field's `errorText`.
+extension AppErrorCodeX on String? {
+  String? fieldErrorText(BuildContext context) {
+    final code = this;
+    if (code == null) return null;
+    return AppError.local(code).localized(context);
+  }
+}

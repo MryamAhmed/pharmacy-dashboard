@@ -10,7 +10,21 @@
   "loginSubtitle": "Sign in to continue",
   "loginEmailHint": "Enter your email",
   "loginPasswordHint": "Enter your password",
-  "loginSubmitButton": "Log in",
+  "loginSubmitButton": "Login",
+
+  "loginWelcomeTitle": "Welcome Back {name}!",
+  "@loginWelcomeTitle": {
+    "description": "Login screen greeting — {name} is the returning user's display name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "loginEmailLabel": "Email",
+  "loginPasswordLabel": "Password",
+  "loginRememberMe": "Remember me",
+  "loginForgotPassword": "Forgot Password ?",
 
   "validationFieldRequired": "This field is required",
   "validationInvalidEmail": "Please enter a valid email address",
