@@ -53,6 +53,19 @@ class TestKeys {
 
   // Home — individual tab screens
   static const String homeTabPage = 'homeTabPage';
+  static const String homeDashboardTitle1 = 'homeDashboardTitle1';
+  static const String homeDashboardTitle2 = 'homeDashboardTitle2';
+  static const String homeDashboardTitle3 = 'homeDashboardTitle3';
+  static const String homeDashboardTitle4 = 'homeDashboardTitle4';
+  static const String homeDashboardSubTitle1 = 'homeDashboardSubTitle1';
+  static const String homeDashboardSubTitle2 = 'homeDashboardSubTitle2';
+  static const String homeDashboardSubTitle3 = 'homeDashboardSubTitle3';
+  static const String homeDashboardSubTitle4 = 'homeDashboardSubTitle4';
+  static const String homeQuickActions = 'homeQuickActions';
+  static const String approveRating = 'approveRating';
+  static const String verifyUsers = 'verifyUsers';
+  static const String verifyParmacies = 'verifyParmacies';
+
   static const String pharmacyManagementPage = 'pharmacyManagementPage';
   static const String ratePage = 'ratePage';
   static const String userManagementPage = 'userManagementPage';

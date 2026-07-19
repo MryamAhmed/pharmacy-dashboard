@@ -52,5 +52,26 @@
   "navRate": "Rate",
   "navUsers": "Users",
 
-  "searchHint": "Search"
+  "searchHint": "Search",
+
+  "homeGreeting": "Hello {name}",
+  "@homeGreeting": {
+    "description": "Home tab app-bar greeting — {name} is the signed-in user's display name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "recentActivityTitle": "Recent Activity",
+  "quickActionsTitle": "Quick Actions",
+  "quickActionApproveRating": "Approve Rating",
+  "quickActionVerifyUsers": "Verify Users",
+  "quickActionVerifyPharmacies": "Verify Pharmacies",
+
+  "homeDashboardUsersSubtitle": "Users",
+  "homeDashboardActiveJobsSubtitle": "Active Jobs",
+  "homeDashboardPharmaciesSubtitle": "Pharmacies",
+  "homeDashboardApplicationsSubtitle": "Applications"
 }
