@@ -73,5 +73,85 @@
   "homeDashboardUsersSubtitle": "Users",
   "homeDashboardActiveJobsSubtitle": "Active Jobs",
   "homeDashboardPharmaciesSubtitle": "Pharmacies",
-  "homeDashboardApplicationsSubtitle": "Applications"
+  "homeDashboardApplicationsSubtitle": "Applications",
+
+  "ratePendingTitle": "Pending Ratings",
+  "rateReviewsWaitingForApproval": "{count} reviews waiting for approval",
+  "@rateReviewsWaitingForApproval": {
+    "description": "Rate tab subtitle — {count} is how many reviews still have RateStatus.pending",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rateForUser": "for {name}",
+  "@rateForUser": {
+    "description": "Rate tab card — {name} is the reviewing user's display name, shown next to the pharmacy name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "rateApproveButton": "Approve",
+  "rateFilterAll": "All",
+  "rateFilterFiveStars": "5★",
+  "rateFilterFourStars": "4★",
+  "rateFilterThreeStars": "3★",
+  "rateFilterOneOrTwoStars": "1-2★",
+  "rateEmptyState": "No reviews found",
+
+  "relativeTimeDaysAgo": "{count}d ago",
+  "@relativeTimeDaysAgo": {
+    "description": "Coarse elapsed-time label — {count} whole days since the timestamp",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "relativeTimeHoursAgo": "{count}h ago",
+  "@relativeTimeHoursAgo": {
+    "description": "Coarse elapsed-time label — {count} whole hours since the timestamp",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "relativeTimeMinutesAgo": "{count}m ago",
+  "@relativeTimeMinutesAgo": {
+    "description": "Coarse elapsed-time label — {count} whole minutes since the timestamp",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "relativeTimeJustNow": "just now",
+
+  "rateDetailsTitle": "Review Details",
+  "rateStatusApprove": "Approved",
+  "rateStatusPending": "Pending",
+  "rateStatusReject": "Rejected",
+
+  "rateDetailsApproveButton": "Approve Rating",
+  "rateDetailsRejectButton": "Reject Rating",
+  "rateDetailsContextLabel": "Context",
+  "rateDetailsPositionLabel": "Position",
+  "rateDetailsShiftDateLabel": "Shift date",
+  "rateDetailsPendingApproval": "⏳  Pending approval — submitted {time}",
+  "@rateDetailsPendingApproval": {
+    "description": "Rate details pending banner — {time} is the relative-time label (e.g. '3h ago')",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "rateDetailsPreviousRatingsLabel": "'s previous ratings:",
+  "rateDetailsReviewTextLabel": "Review Text",
+  "rateDetailsRatingForLabel": "Rating for",
+  "rateDetailsRatingGivenLabel": "Rating Given"
 }
