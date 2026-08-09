@@ -20,9 +20,9 @@ class AppCheckBoxWidget extends StatelessWidget {
       scale: scale ?? 0.8,
       child: Checkbox(
         visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
-        side: const BorderSide(color: AppColors.primaryColor, width: 2),
+        side: const BorderSide(color: AppColors.primaryColor, width: 1),
         activeColor: AppColors.primaryColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.r)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
         value: value,
         onChanged: onChanged,
       ),

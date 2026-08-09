@@ -9,6 +9,12 @@
   "loginPasswordHint": "أدخل كلمة المرور",
   "loginSubmitButton": "تسجيل الدخول",
 
+  "loginWelcomeTitle": "مرحبًا بعودتك يا {name}!",
+  "loginEmailLabel": "البريد الإلكتروني",
+  "loginPasswordLabel": "كلمة المرور",
+  "loginRememberMe": "تذكرني",
+  "loginForgotPassword": "نسيت كلمة المرور؟",
+
   "validationFieldRequired": "هذا الحقل مطلوب",
   "validationInvalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
   "validationPasswordMismatch": "كلمتا المرور غير متطابقتين",

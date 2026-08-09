@@ -33,7 +33,7 @@ class MainTheme {
     final Color onSurface = isDark ? AppColors.textWhite : AppColors.textBlack;
     final Color onSurfaceMuted = isDark
         ? const Color(0xFFA4ADBD)
-        : AppColors.textGray;
+        : AppColors.hintStyleColor;
     final Color outline = isDark
         ? const Color(0xFF2A2F3A)
         : AppColors.textFieldBorder;
@@ -92,28 +92,28 @@ class MainTheme {
       iconTheme: IconThemeData(color: onSurface),
 
       inputDecorationTheme: InputDecorationTheme(
-        hintStyle: AppTextStyles.regular14.copyWith(color: onSurfaceMuted),
+        hintStyle: AppTextStyles.regular12.copyWith(color: onSurfaceMuted),
         errorStyle: AppTextStyles.regular14Red,
         filled: true,
         fillColor: inputFill,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(4.r),
-          borderSide: BorderSide(color: outline),
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: const BorderSide(color: Colors.transparent),
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(4.r),
-          borderSide: BorderSide(color: outline),
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: const BorderSide(color: Colors.transparent),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(4.r),
+          borderRadius: BorderRadius.circular(8.r),
           borderSide: const BorderSide(color: AppColors.mainRedColor),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(4.r),
+          borderRadius: BorderRadius.circular(8.r),
           borderSide: const BorderSide(color: AppColors.mainRedColor),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(4.r),
+          borderRadius: BorderRadius.circular(8.r),
           borderSide: const BorderSide(color: AppColors.primaryColor),
         ),
       ),

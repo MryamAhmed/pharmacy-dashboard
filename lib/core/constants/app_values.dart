@@ -27,9 +27,12 @@ class AppSpace {
   static const double s40 = 40;
   static const double s46 = 46;
   static const double s48 = 48;
+  static const double s50 = 50;
   static const double s56 = 56;
+  static const double s58 = 58;
   static const double s64 = 64;
   static const double s66 = 66;
+  static const double s74 = 74;
   static const double s80 = 80;
   static const double s100 = 100;
 }

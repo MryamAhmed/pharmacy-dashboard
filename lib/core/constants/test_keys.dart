@@ -16,6 +16,8 @@ class TestKeys {
   // ---------- Shared — search field (AppSearchWidget) ----------
   static const String appSearchField = 'appSearchField';
 
+  // ---------- Shared — text field (AppSearchWidget) ----------
+  static const String lableText = 'lableText';
   // ---------- Shared — app bar (AppBarWidget) ----------
   static const String appBarWidget = 'appBarWidget';
   static const String appBarBackButton = 'appBarBackButton';
@@ -34,6 +36,10 @@ class TestKeys {
   static const String loginPasswordField = 'loginPasswordField';
   static const String loginPasswordVisibilityToggle =
       'loginPasswordVisibilityToggle';
+  static const String loginRememberMeCheckbox = 'loginRememberMeCheckbox';
+  static const String loginRememberMeLabel = 'loginRememberMeLabel';
+  static const String loginForgotPasswordButton = 'loginForgotPasswordButton';
+  static const String loginGeneralError = 'loginGeneralError';
   static const String loginSubmitButton = 'loginSubmitButton';
 
   // ---------- Home shell (bottom navigation) ----------
