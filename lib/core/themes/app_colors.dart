@@ -60,4 +60,8 @@ class AppColors {
 
   // ---------- styles color ----------
   static const Color hintStyleColor = Color(0xFF8C8C8C);
+
+  static const Color dashboardItem2Color = Color(0xFF27AE60);
+  static const Color dashboardItem3Color = Color(0xFFF39C12);
+  static const Color dashboardItem4Color = Color(0xFF9C27B0);
 }

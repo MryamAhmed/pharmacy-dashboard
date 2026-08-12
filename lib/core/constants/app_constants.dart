@@ -24,4 +24,10 @@ class AppConstants {
 
   /// Masked placeholder shown in the password field.
   static const String loginPasswordPlaceholder = '************';
+
+  // ---------- Home ----------
+  /// Placeholder display name for the home tab's app-bar greeting until a
+  /// real signed-in user is wired in — a stand-in value, not translatable
+  /// copy, so it lives here rather than in `l10n`.
+  static const String homePlaceholderUserName = 'Aya';
 }

@@ -30,8 +30,12 @@ class AppTextStyles {
   );
 
   // ---------- Adaptive (no baked colour) ----------
+  static TextStyle get bold10White =>
+      _style(10, FontWeight.bold, color: AppColors.textWhite);
 
   static TextStyle get regular12 => _style(12, FontWeight.normal);
+  static TextStyle get regular12HintColor =>
+      _style(12, FontWeight.normal, color: AppColors.hintTextGray);
   static TextStyle get regular12PrimaryColor =>
       _style(12, FontWeight.normal, color: AppColors.primaryColor);
   static TextStyle get medium12 => _style(12, FontWeight.w500);
@@ -51,6 +55,9 @@ class AppTextStyles {
 
   static TextStyle get medium20 => _style(20, FontWeight.w500);
   static TextStyle get bold20 => _style(20, FontWeight.bold);
+  static TextStyle get bold22 => _style(22, FontWeight.bold);
+  static TextStyle get bold22Primary =>
+      _style(22, FontWeight.bold, color: AppColors.primaryColor);
 
   static TextStyle get bold24 => _style(24, FontWeight.bold);
   static TextStyle get bold28 => _style(28, FontWeight.bold);

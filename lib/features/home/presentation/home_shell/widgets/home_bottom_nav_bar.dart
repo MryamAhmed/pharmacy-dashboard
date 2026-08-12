@@ -1,10 +1,10 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pharmacy_app/gen/assets.gen.dart';
 
 // Project imports:
-import '../../../../../core/constants/app_values.dart';
 import '../../../../../core/constants/test_keys.dart';
-import '../../../../../core/extensions/build_context_localizations.dart';
 import '../../../../../core/themes/app_colors.dart';
 
 /// Bottom navigation bar for [HomeShellScreen]'s four tabs.
@@ -24,64 +24,108 @@ class HomeBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    return BottomNavigationBar(
-      key: const Key(TestKeys.homeBottomNavBar),
-      currentIndex: currentIndex,
-      onTap: onTap,
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: AppColors.primaryColor,
-      unselectedItemColor: AppColors.textGray,
-      items: [
-        BottomNavigationBarItem(
-          icon: const Icon(
-            Icons.home_outlined,
-            key: Key(TestKeys.homeNavHomeTab),
-            size: HomeShellDimens.navIconSize,
+    return Theme(
+      data: Theme.of(context).copyWith(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      ),
+      child: BottomNavigationBar(
+        key: const Key(TestKeys.homeBottomNavBar),
+        currentIndex: currentIndex,
+        onTap: onTap,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: AppColors.textWhite,
+        items: [
+          BottomNavigationBarItem(
+            icon: Assets.images.icons.homeTabIcon.svg(
+              height: 24.spMin,
+              width: 24.spMin,
+              color: AppColors.hintStyleColor,
+            ),
+            activeIcon: Container(
+              height: 36.spMin,
+              width: 36.spMin,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.primaryColor,
+              ),
+              child: Center(
+                child: Assets.images.icons.homeTabIcon.svg(
+                  height: 24.spMin,
+                  width: 24.spMin,
+                ),
+              ),
+            ),
+            label: '',
           ),
-          activeIcon: const Icon(
-            Icons.home,
-            size: HomeShellDimens.navIconSize,
+          BottomNavigationBarItem(
+            icon: Assets.images.icons.pharmacyTabIcon.svg(
+              height: 24.spMin,
+              width: 24.spMin,
+              color: AppColors.hintStyleColor,
+            ),
+            activeIcon: Container(
+              height: 36.spMin,
+              width: 36.spMin,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.primaryColor,
+              ),
+              child: Center(
+                child: Assets.images.icons.pharmacyTabIcon.svg(
+                  height: 24.spMin,
+                  width: 24.spMin,
+                ),
+              ),
+            ),
+            label: '',
           ),
-          label: l10n.navHome,
-        ),
-        BottomNavigationBarItem(
-          icon: const Icon(
-            Icons.local_pharmacy_outlined,
-            key: Key(TestKeys.homeNavPharmacyManagementTab),
-            size: HomeShellDimens.navIconSize,
+          BottomNavigationBarItem(
+            icon: Assets.images.icons.userTabIcon.svg(
+              height: 24.spMin,
+              width: 24.spMin,
+              color: AppColors.hintStyleColor,
+            ),
+            activeIcon: Container(
+              height: 36.spMin,
+              width: 36.spMin,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.primaryColor,
+              ),
+              child: Center(
+                child: Assets.images.icons.userTabIcon.svg(
+                  height: 24.spMin,
+                  width: 24.spMin,
+                ),
+              ),
+            ),
+            label: '',
           ),
-          activeIcon: const Icon(
-            Icons.local_pharmacy,
-            size: HomeShellDimens.navIconSize,
+          BottomNavigationBarItem(
+            icon: Assets.images.icons.rateTabIcon.svg(
+              height: 24.spMin,
+              width: 24.spMin,
+              color: AppColors.hintStyleColor,
+            ),
+            activeIcon: Container(
+              height: 36.spMin,
+              width: 36.spMin,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.primaryColor,
+              ),
+              child: Center(
+                child: Assets.images.icons.rateTabIcon.svg(
+                  height: 24.spMin,
+                  width: 24.spMin,
+                ),
+              ),
+            ),
+            label: '',
           ),
-          label: l10n.navPharmacy,
-        ),
-        BottomNavigationBarItem(
-          icon: const Icon(
-            Icons.star_outline,
-            key: Key(TestKeys.homeNavRateTab),
-            size: HomeShellDimens.navIconSize,
-          ),
-          activeIcon: const Icon(
-            Icons.star,
-            size: HomeShellDimens.navIconSize,
-          ),
-          label: l10n.navRate,
-        ),
-        BottomNavigationBarItem(
-          icon: const Icon(
-            Icons.people_outline,
-            key: Key(TestKeys.homeNavUserManagementTab),
-            size: HomeShellDimens.navIconSize,
-          ),
-          activeIcon: const Icon(
-            Icons.people,
-            size: HomeShellDimens.navIconSize,
-          ),
-          label: l10n.navUsers,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

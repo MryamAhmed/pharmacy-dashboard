@@ -38,5 +38,18 @@
   "navRate": "التقييم",
   "navUsers": "المستخدمون",
 
-  "searchHint": "بحث"
+  "searchHint": "بحث",
+
+  "homeGreeting": "مرحبًا {name}",
+
+  "recentActivityTitle": "النشاط الأخير",
+  "quickActionsTitle": "إجراءات سريعة",
+  "quickActionApproveRating": "الموافقة على التقييم",
+  "quickActionVerifyUsers": "التحقق من المستخدمين",
+  "quickActionVerifyPharmacies": "التحقق من الصيدليات",
+
+  "homeDashboardUsersSubtitle": "المستخدمون",
+  "homeDashboardActiveJobsSubtitle": "الوظائف النشطة",
+  "homeDashboardPharmaciesSubtitle": "الصيدليات",
+  "homeDashboardApplicationsSubtitle": "الطلبات"
 }
