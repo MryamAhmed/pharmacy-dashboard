@@ -51,5 +51,37 @@
   "homeDashboardUsersSubtitle": "المستخدمون",
   "homeDashboardActiveJobsSubtitle": "الوظائف النشطة",
   "homeDashboardPharmaciesSubtitle": "الصيدليات",
-  "homeDashboardApplicationsSubtitle": "الطلبات"
+  "homeDashboardApplicationsSubtitle": "الطلبات",
+
+  "ratePendingTitle": "التقييمات المعلقة",
+  "rateReviewsWaitingForApproval": "{count} تقييم بانتظار الموافقة",
+  "rateForUser": "لـ {name}",
+  "rateApproveButton": "موافقة",
+  "rateFilterAll": "الكل",
+  "rateFilterFiveStars": "٥★",
+  "rateFilterFourStars": "٤★",
+  "rateFilterThreeStars": "٣★",
+  "rateFilterOneOrTwoStars": "١-٢★",
+  "rateEmptyState": "لا توجد تقييمات",
+
+  "relativeTimeDaysAgo": "منذ {count} يوم",
+  "relativeTimeHoursAgo": "منذ {count} ساعة",
+  "relativeTimeMinutesAgo": "منذ {count} دقيقة",
+  "relativeTimeJustNow": "الآن",
+
+  "rateDetailsTitle": "تفاصيل التقييم",
+  "rateStatusApprove": "تمت الموافقة",
+  "rateStatusPending": "قيد الانتظار",
+  "rateStatusReject": "مرفوض",
+
+  "rateDetailsApproveButton": "الموافقة على التقييم",
+  "rateDetailsRejectButton": "رفض التقييم",
+  "rateDetailsContextLabel": "السياق",
+  "rateDetailsPositionLabel": "المنصب",
+  "rateDetailsShiftDateLabel": "تاريخ الوردية",
+  "rateDetailsPendingApproval": "⏳  بانتظار الموافقة — تم الإرسال {time}",
+  "rateDetailsPreviousRatingsLabel": "تقييماته السابقة:",
+  "rateDetailsReviewTextLabel": "نص المراجعة",
+  "rateDetailsRatingForLabel": "التقييم لـ",
+  "rateDetailsRatingGivenLabel": "التقييم المُعطى"
 }

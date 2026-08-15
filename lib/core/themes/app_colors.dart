@@ -64,4 +64,9 @@ class AppColors {
   static const Color dashboardItem2Color = Color(0xFF27AE60);
   static const Color dashboardItem3Color = Color(0xFFF39C12);
   static const Color dashboardItem4Color = Color(0xFF9C27B0);
+  static const Color textAvatarBackgroundColor = Color(0xFFD0E3F0);
+  static const Color rateStarsColor = Color(0xFFFFCC00);
+  static const Color ratePendingBackgroundColor = Color(0xFFFFF3E0);
+  static const Color rateRejectBackgroundColor = Color(0xFFFEEBEB);
+  static const Color rateRejectTextColor = Color(0xFFE74C3C);
 }

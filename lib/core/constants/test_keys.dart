@@ -69,4 +69,38 @@ class TestKeys {
   static const String pharmacyManagementPage = 'pharmacyManagementPage';
   static const String ratePage = 'ratePage';
   static const String userManagementPage = 'userManagementPage';
+
+  // rate — individual tab screens
+  static const String numberOfPending = 'numberOfPending';
+  static const String rateFilterTab = 'rateFilterTab';
+  static const String textAvatarLabel = 'textAvatarLabel';
+  static const String pharmacyRateLabel = 'pharmacyRateLabel';
+  static const String userRateLabel = 'userRateLabel';
+  static const String rateStarsLabel = 'rateStarsLabel';
+  static const String rateDurationLabel = 'rateDurationLabel';
+  static const String rateDescriptionLabel = 'rateDescriptionLabel';
+  static const String rateButtonLabel = 'rateButtonLabel';
+  static const String rateCardItem = 'rateCardItem';
+  static const String rateEmptyState = 'rateEmptyState';
+
+  // ---------- Rate details screen ----------
+  static const String rateDetailsPage = 'rateDetailsPage';
+  static const String rateDetailsPharmacyName = 'rateDetailsPharmacyName';
+  static const String rateDetailsPharmacyAddress = 'rateDetailsPharmacyAddress';
+  static const String rateDetailsUserName = 'rateDetailsUserName';
+  static const String rateDetailsUserAddress = 'rateDetailsUserAddress';
+  static const String rateDetailsStars = 'rateDetailsStars';
+  static const String rateDetailsStatus = 'rateDetailsStatus';
+  static const String rateDetailsDate = 'rateDetailsDate';
+  static const String rateDetailsDescription = 'rateDetailsDescription';
+  static const String rateDetailsRateLabel = 'rateDetailsRateLabel';
+  static const String rateDetailsRatingGivenLabel =
+      'rateDetailsRatingGivenLabel';
+  static const String rateDetailsRatingTextLabel = 'rateDetailsRatingTextLabel';
+  static const String rateDetailsContextLabel = 'rateDetailsContextLabel';
+  static const String rateDetailsPostionContext = 'rateDetailsPostionContext';
+  static const String rateDetailsShiftDateContext =
+      'rateDetailsShiftDateContext';
+  static const String rateDetailsPreviousRate = 'rateDetailsPreviousRate';
+  static const String rateDetailsButtonLabel = 'rateDetailsButtonLabel';
 }

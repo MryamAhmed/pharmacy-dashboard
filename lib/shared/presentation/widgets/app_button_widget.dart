@@ -25,6 +25,7 @@ class AppButtonWidget extends StatelessWidget {
     this.width,
     this.height,
     this.radius,
+    this.style,
   }) : super(key: key);
 
   final String text;
@@ -40,6 +41,7 @@ class AppButtonWidget extends StatelessWidget {
   final double? width;
   final double? height;
   final double? radius;
+  final TextStyle? style;
 
   bool get _canPress => isEnabled && !isLoading && onPressed != null;
 
@@ -75,9 +77,11 @@ class AppButtonWidget extends StatelessWidget {
               )
             : AppText(
                 text: text,
-                style: AppTextStyles.medium16White.copyWith(
-                  color: resolvedTextColor,
-                ),
+                style:
+                    style ??
+                    AppTextStyles.medium16White.copyWith(
+                      color: resolvedTextColor,
+                    ),
                 maxLines: 1,
               ),
       ),

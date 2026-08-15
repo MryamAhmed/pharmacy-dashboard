@@ -146,7 +146,7 @@ class AppBarWidgetDimens {
   AppBarWidgetDimens._();
 
   /// Toolbar height. Matches [MainTheme]'s `AppBarTheme.toolbarHeight`.
-  static const double height = 70;
+  static const double height = 50;
 
   /// Width/height of the back icon.
   static const double backIconSize = 24;

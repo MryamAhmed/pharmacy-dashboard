@@ -34,20 +34,41 @@ class AppTextStyles {
       _style(10, FontWeight.bold, color: AppColors.textWhite);
 
   static TextStyle get regular12 => _style(12, FontWeight.normal);
+  static TextStyle get regular12DashboardItem3Color =>
+      _style(12, FontWeight.normal, color: AppColors.dashboardItem3Color);
+
   static TextStyle get regular12HintColor =>
       _style(12, FontWeight.normal, color: AppColors.hintTextGray);
+  static TextStyle get regular10Hintstyle =>
+      _style(10, FontWeight.normal, color: AppColors.hintStyleColor);
+  static TextStyle get regular12Hintstyle =>
+      _style(12, FontWeight.normal, color: AppColors.hintStyleColor);
   static TextStyle get regular12PrimaryColor =>
       _style(12, FontWeight.normal, color: AppColors.primaryColor);
   static TextStyle get medium12 => _style(12, FontWeight.w500);
+  static TextStyle get medium12Hintstyle =>
+      _style(12, FontWeight.w500, color: AppColors.hintStyleColor);
   static TextStyle get bold12 => _style(12, FontWeight.bold);
+  static TextStyle get bold12RateRejectTextColor =>
+      _style(12, FontWeight.bold, color: AppColors.rateRejectTextColor);
+  static TextStyle get bold12White =>
+      _style(12, FontWeight.bold, color: AppColors.textWhite);
 
   static TextStyle get regular14 => _style(14, FontWeight.normal);
+  static TextStyle get regular14RateStarsColor =>
+      _style(14, FontWeight.normal, color: AppColors.rateStarsColor);
+  static TextStyle get regular28RateStarsColor =>
+      _style(28, FontWeight.normal, color: AppColors.rateStarsColor);
   static TextStyle get medium14 => _style(14, FontWeight.w500);
   static TextStyle get bold14 => _style(14, FontWeight.bold);
+  static TextStyle get bold14PrimaryColor =>
+      _style(14, FontWeight.bold, color: AppColors.primaryColor);
 
   static TextStyle get regular16 => _style(16, FontWeight.normal);
   static TextStyle get medium16 => _style(16, FontWeight.w500);
   static TextStyle get bold16 => _style(16, FontWeight.bold);
+  static TextStyle get bold16PrimaryColor =>
+      _style(16, FontWeight.bold, color: AppColors.primaryColor);
 
   static TextStyle get regular18 => _style(18, FontWeight.normal);
   static TextStyle get medium18 => _style(18, FontWeight.w500);
