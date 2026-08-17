@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:pharmacy_app/features/home/presentation/rate_modules/rate_details/presentation/rate_details/widgets/rate_details_context_card_widget.dart';
-import 'package:pharmacy_app/features/home/presentation/rate_modules/rate_details/presentation/rate_details/widgets/rate_details_pending_widget.dart';
-import 'package:pharmacy_app/features/home/presentation/rate_modules/rate_details/presentation/rate_details/widgets/rate_details_previous_rate_widget.dart';
-import 'package:pharmacy_app/features/home/presentation/rate_modules/rate_details/presentation/rate_details/widgets/rate_details_rate_text_card_widget.dart';
-import 'package:pharmacy_app/features/home/presentation/rate_modules/rate_details/presentation/rate_details/widgets/rate_details_user_card_widget.dart';
-import 'package:pharmacy_app/features/home/presentation/rate_modules/rate_details/presentation/rate_details/widgets/rate_given_widget.dart';
+import 'package:pharmacy_app/features/home/presentation/rate_modules_tab/rate_details/presentation/rate_details/widgets/rate_details_context_card_widget.dart';
+import 'package:pharmacy_app/features/home/presentation/rate_modules_tab/rate_details/presentation/rate_details/widgets/rate_details_pending_widget.dart';
+import 'package:pharmacy_app/features/home/presentation/rate_modules_tab/rate_details/presentation/rate_details/widgets/rate_details_previous_rate_widget.dart';
+import 'package:pharmacy_app/features/home/presentation/rate_modules_tab/rate_details/presentation/rate_details/widgets/rate_details_rate_text_card_widget.dart';
+import 'package:pharmacy_app/features/home/presentation/rate_modules_tab/rate_details/presentation/rate_details/widgets/rate_details_user_card_widget.dart';
+import 'package:pharmacy_app/features/home/presentation/rate_modules_tab/rate_details/presentation/rate_details/widgets/rate_given_widget.dart';
 
 // Project imports:
 import '../../../../../../../../core/constants/app_values.dart';

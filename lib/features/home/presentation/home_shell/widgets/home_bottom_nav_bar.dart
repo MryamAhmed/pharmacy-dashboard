@@ -81,28 +81,6 @@ class HomeBottomNavBar extends StatelessWidget {
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Assets.images.icons.userTabIcon.svg(
-              height: 24.spMin,
-              width: 24.spMin,
-              color: AppColors.hintStyleColor,
-            ),
-            activeIcon: Container(
-              height: 36.spMin,
-              width: 36.spMin,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.primaryColor,
-              ),
-              child: Center(
-                child: Assets.images.icons.userTabIcon.svg(
-                  height: 24.spMin,
-                  width: 24.spMin,
-                ),
-              ),
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
             icon: Assets.images.icons.rateTabIcon.svg(
               height: 24.spMin,
               width: 24.spMin,

@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 import '../../../../../core/constants/test_keys.dart';
 import '../../../../../shared/presentation/widgets/app_scaffold.dart';
 import '../../home_tab/screens/home_tab_screen.dart';
-import '../../pharmacy_management/screens/pharmacy_management_screen.dart';
-import '../../rate_modules/rate/screens/rate_screen.dart';
-import '../../user_management/screens/user_management_screen.dart';
+import '../../pharmacy_management_tab/screens/pharmacy_management_screen.dart';
+import '../../rate_modules_tab/rate/screens/rate_screen.dart';
 import '../widgets/home_bottom_nav_bar.dart';
 
 /// Bottom-navigation shell for the home module.
@@ -33,7 +32,6 @@ class _HomeShellScreenState extends State<HomeShellScreen> {
   late final List<Widget> _tabs = [
     const HomeTabScreen(key: Key(TestKeys.homeTabPage)),
     const PharmacyManagementScreen(key: Key(TestKeys.pharmacyManagementPage)),
-    const UserManagementScreen(key: Key(TestKeys.userManagementPage)),
     const RateScreen(key: Key(TestKeys.ratePage)),
   ];
 
