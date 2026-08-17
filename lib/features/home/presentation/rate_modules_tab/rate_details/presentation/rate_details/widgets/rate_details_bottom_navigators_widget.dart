@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../../../../core/constants/app_values.dart';
@@ -24,37 +23,19 @@ class RateDetailsBottomNavigatorsWidget extends StatelessWidget {
         AppPaddings.p24,
         AppPaddings.p24,
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: AppButtonWidget(
-              height: 50.h,
-              radius: 8.r,
-              key: const ValueKey('${TestKeys.rateDetailsButtonLabel}'),
-              text: context.l10n.rateDetailsApproveButton,
-              onPressed: () {
-                context.pop();
-              },
-              backgroundColor: AppColors.dashboardItem2Color,
-              style: AppTextStyles.bold12White,
-            ),
-          ),
-          const Gap(AppSpace.s12),
-          Expanded(
-            child: AppButtonWidget(
-              height: 50.h,
-              radius: 8.r,
-              key: const ValueKey('${TestKeys.rateDetailsButtonLabel}'),
-              text: context.l10n.rateDetailsRejectButton,
-              onPressed: () {
-                context.pop();
-              },
-              backgroundColor: AppColors.rateRejectBackgroundColor,
+      child: Expanded(
+        child: AppButtonWidget(
+          height: 50.h,
+          radius: 8.r,
+          key: const ValueKey('${TestKeys.rateDetailsButtonLabel}'),
+          text: context.l10n.rateDetailsRejectButton,
+          onPressed: () {
+            context.pop();
+          },
+          backgroundColor: AppColors.rateRejectBackgroundColor,
 
-              style: AppTextStyles.bold12RateRejectTextColor,
-            ),
-          ),
-        ],
+          style: AppTextStyles.bold12RateRejectTextColor,
+        ),
       ),
     );
   }
