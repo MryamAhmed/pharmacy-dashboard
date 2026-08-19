@@ -103,4 +103,13 @@ class TestKeys {
       'rateDetailsShiftDateContext';
   static const String rateDetailsPreviousRate = 'rateDetailsPreviousRate';
   static const String rateDetailsButtonLabel = 'rateDetailsButtonLabel';
+
+  // pharmacymanagement — individual tab screens
+  static const String numberOfRegistered = 'numberOfPendingPharmacies';
+  static const String pharmacyCardItem = 'pharmacyCardItem';
+  static const String pharmacyName = 'pharmacyName';
+  static const String pharmacyVerified = 'pharmacyVerified';
+  static const String pharmacyLocation = 'pharmacyLocation';
+  static const String pharmacyOwner = 'pharmacyOwner';
+  static const String pharmacyTime = 'pharmacyTime';
 }
