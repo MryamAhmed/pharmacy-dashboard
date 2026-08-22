@@ -153,5 +153,8 @@
   "rateDetailsPreviousRatingsLabel": "'s previous ratings:",
   "rateDetailsReviewTextLabel": "Review Text",
   "rateDetailsRatingForLabel": "Rating for",
-  "rateDetailsRatingGivenLabel": "Rating Given"
+  "rateDetailsRatingGivenLabel": "Rating Given",
+
+  "searchHint": "ٍSearch"
+
 }
