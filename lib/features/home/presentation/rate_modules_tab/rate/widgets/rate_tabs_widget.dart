@@ -1,17 +1,39 @@
-import 'package:flutter/widgets.dart';
+// Flutter imports:
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 
-import '../../../../../../core/constants/app_values.dart';
+// Project imports:
+import '../../../../../../core/constants/test_keys.dart';
 import '../../../../../../core/enums/rate_rating_filter.dart';
 import '../../../../../../core/extensions/build_context_localizations.dart';
+import '../../../../../../shared/presentation/widgets/app_filter_tab.dart';
+import '../../../../../../shared/presentation/widgets/app_filter_tabs_widget.dart';
 import '../cubit/rate_cubit.dart';
 import '../cubit/rate_state.dart';
-import 'rate_tab_item_widget.dart';
 
+/// Rate-tab adapter around [AppFilterTabsWidget]: maps [RateRatingFilter]
+/// buckets (5 chips, each with a pending-review count) onto the shared row.
 class RateTabsWidget extends StatelessWidget {
-  final RateState state;
   const RateTabsWidget({super.key, required this.state});
+
+  final RateState state;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppFilterTabsWidget<RateRatingFilter>(
+      tabs: [
+        for (final filter in RateRatingFilter.values)
+          AppFilterTab<RateRatingFilter>(
+            value: filter,
+            title: _filterLabel(context, filter),
+            count: state.countFor(filter),
+            itemKey: Key('${TestKeys.rateFilterTab}_${filter.name}'),
+          ),
+      ],
+      selectedValue: state.selectedFilter,
+      onSelected: (filter) => context.read<RateCubit>().selectFilter(filter),
+    );
+  }
 
   String _filterLabel(BuildContext context, RateRatingFilter filter) =>
       switch (filter) {
@@ -21,27 +43,4 @@ class RateTabsWidget extends StatelessWidget {
         RateRatingFilter.three => context.l10n.rateFilterThreeStars,
         RateRatingFilter.oneOrTwo => context.l10n.rateFilterOneOrTwoStars,
       };
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: context.screenWidth,
-      child: Row(
-        children: [
-          for (final filter in RateRatingFilter.values) ...[
-            Expanded(
-              child: RateTabItemWidget(
-                isSelected: state.selectedFilter == filter,
-                filter: filter,
-                title:
-                    '${_filterLabel(context, filter)} (${state.countFor(filter)})',
-                onTap: () => context.read<RateCubit>().selectFilter(filter),
-              ),
-            ),
-            if (filter != RateRatingFilter.values.last) const Gap(AppSpace.s8),
-          ],
-        ],
-      ),
-    );
-  }
 }

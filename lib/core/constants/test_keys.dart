@@ -23,6 +23,10 @@ class TestKeys {
   static const String appBarBackButton = 'appBarBackButton';
   static const String appBarTitle = 'appBarTitle';
 
+  // ---------- Shared — filter tabs (AppFilterTabsWidget) ----------
+  static const String appFilterTabs = 'appFilterTabs';
+  static const String appFilterTab = 'appFilterTab';
+
   // ---------- Splash ----------
   static const String splashPage = 'splashPage';
   static const String splashLogo = 'splashLogo';

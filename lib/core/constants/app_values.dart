@@ -151,3 +151,15 @@ class AppBarWidgetDimens {
   /// Width/height of the back icon.
   static const double backIconSize = 24;
 }
+
+/// Dimensions for the shared filter-tab row
+/// ([AppFilterTabsWidget] / [AppFilterTabChipWidget]).
+class AppFilterTabsDimens {
+  AppFilterTabsDimens._();
+
+  /// Height of each compact segmented chip.
+  static const double chipHeight = 30;
+
+  /// Corner radius of each chip (fully rounded pill).
+  static const double chipRadius = 30;
+}
