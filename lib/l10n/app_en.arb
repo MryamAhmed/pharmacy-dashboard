@@ -155,6 +155,9 @@
   "rateDetailsRatingForLabel": "Rating for",
   "rateDetailsRatingGivenLabel": "Rating Given",
 
-  "searchHint": "ٍSearch"
+  "searchHint": "ٍSearch",
+  "rateFilterVerified":"Verified",
+  "rateFilterPending":"Pending",
+  "rateFilterSuspended":"Suspended"
 
 }

@@ -117,4 +117,5 @@ class TestKeys {
   static const String pharmacyOwner = 'pharmacyOwner';
   static const String pharmacyTime = 'pharmacyTime';
   static const String searchBarWidget = 'searchBarWidget';
+  static const String pharmacyFilterTab ='pharmacyFilterTab';
 }
