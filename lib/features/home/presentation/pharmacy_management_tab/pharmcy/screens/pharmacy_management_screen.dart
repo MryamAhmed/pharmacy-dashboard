@@ -2,12 +2,12 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import '../../../../../core/constants/app_values.dart';
-import '../../../../../core/constants/test_keys.dart';
-import '../../../../../core/extensions/build_context_localizations.dart';
-import '../../../../../core/themes/app_colors.dart';
-import '../../../../../core/themes/app_text_style.dart';
-import '../../../../../shared/presentation/widgets/app_scaffold.dart';
+import '../../../../../../core/constants/app_values.dart';
+import '../../../../../../core/constants/test_keys.dart';
+import '../../../../../../core/extensions/build_context_localizations.dart';
+import '../../../../../../core/themes/app_colors.dart';
+import '../../../../../../core/themes/app_text_style.dart';
+import '../../../../../../shared/presentation/widgets/app_scaffold.dart';
 import '../widgets/pharmacy_management_list_widget.dart';
 
 /// "Pharmacy Management" bottom-nav tab.

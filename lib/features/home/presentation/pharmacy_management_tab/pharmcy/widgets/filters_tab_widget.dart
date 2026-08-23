@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../../core/constants/test_keys.dart';
-import '../../../../../core/enums/pharmacy_filter.dart';
-import '../../../../../core/extensions/build_context_localizations.dart';
-import '../../../../../shared/presentation/widgets/app_filter_tab.dart';
-import '../../../../../shared/presentation/widgets/app_filter_tabs_widget.dart';
+import '../../../../../../core/constants/test_keys.dart';
+import '../../../../../../core/enums/pharmacy_filter.dart';
+import '../../../../../../core/extensions/build_context_localizations.dart';
+import '../../../../../../shared/presentation/widgets/app_filter_tab.dart';
+import '../../../../../../shared/presentation/widgets/app_filter_tabs_widget.dart';
 
 class FiltersTap extends StatelessWidget {
   const FiltersTap({super.key});

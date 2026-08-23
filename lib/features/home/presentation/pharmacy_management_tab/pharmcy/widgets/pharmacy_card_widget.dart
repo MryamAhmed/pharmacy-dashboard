@@ -4,13 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 // Project imports:
-import '../../../../../../core/constants/app_values.dart';
-import '../../../../../../core/themes/app_colors.dart';
-import '../../../../../../core/themes/app_text_style.dart';
-import '../../../../../../shared/presentation/widgets/app_button_widget.dart';
-import '../../../../../../shared/presentation/widgets/app_text.dart';
-import '../../../../../core/constants/test_keys.dart';
-import '../../rate_modules_tab/rate/widgets/text_avatar_widget.dart'
+import '../../../../../../../core/constants/app_values.dart';
+import '../../../../../../../core/themes/app_colors.dart';
+import '../../../../../../../core/themes/app_text_style.dart';
+import '../../../../../../../shared/presentation/widgets/app_button_widget.dart';
+import '../../../../../../../shared/presentation/widgets/app_text.dart';
+import '../../../../../../core/constants/test_keys.dart';
+import '../../../rate_modules_tab/rate/widgets/text_avatar_widget.dart'
     show TextAvatarWidget;
 
 class PharmacyCardWidget extends StatelessWidget {
