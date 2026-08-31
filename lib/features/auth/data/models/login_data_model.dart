@@ -1,3 +1,6 @@
+import '../../domian/entities/login_entity.dart';
+
+/// Data-layer payload returned by the login endpoint.
 class LoginData {
   final String token;
   final String? username;
@@ -32,4 +35,13 @@ class LoginData {
       'expiresOn': expiresOn,
     };
   }
+
+  /// Converts the backend login payload into the domain auth entity.
+  AuthEntity toDomain() => AuthEntity(
+        token: token,
+        username: username,
+        email: email,
+        role: roles,
+        expiresOn: DateTime.parse(expiresOn),
+      );
 }

@@ -1,5 +1,7 @@
 import 'package:pharmacy_app/features/auth/data/models/login_data_model.dart';
+import 'package:pharmacy_app/features/auth/domian/entities/login_entity.dart';
 
+/// Data-layer response envelope returned by the login endpoint.
 class LoginResponse {
   final String message;
   final bool success;
@@ -26,4 +28,7 @@ class LoginResponse {
       'data': data.toJson(),
     };
   }
+
+  /// Converts the successful login response into the app's auth entity.
+  AuthEntity toDomain() => data.toDomain();
 }

@@ -25,11 +25,11 @@ class Flavor {
   static String get baseUrl {
     switch (appFlavor) {
       case AppFlavor.dev:
-        return 'https://api.example.com';
+        return 'https://jobfindertest.runasp.net/api/';
       case AppFlavor.staging:
-        return 'https://api.example.com';
+        return 'https://jobfindertest.runasp.net/api/';
       case AppFlavor.prod:
-        return 'https://api.example.com';
+        return 'https://jobfindertest.runasp.net/api/';
     }
   }
 
