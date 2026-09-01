@@ -14,7 +14,7 @@ import '../../../../../core/constants/app_values.dart';
 import '../../../../../core/constants/test_keys.dart';
 import '../../../../../core/extensions/build_context_localizations.dart';
 import '../../../../../core/themes/app_text_style.dart';
-import '../../../../../shared/domain/entities/app_error_x.dart';
+import '../../../../../core/extensions/app_error_localization.dart';
 import '../../../../../shared/presentation/widgets/app_button_widget.dart';
 import '../../../../../shared/presentation/widgets/app_scaffold.dart';
 import '../../../../../shared/presentation/widgets/app_text.dart';
@@ -66,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                     const Gap(AppSpace.s12),
                     AppText(
                       key: const Key(TestKeys.loginGeneralError),
-                      text: state.error!.resolveMessage(context.l10n),
+                      text: state.error!.localized(context),
                       style: AppTextStyles.regular14Red,
                       textAlign: TextAlign.center,
                     ),

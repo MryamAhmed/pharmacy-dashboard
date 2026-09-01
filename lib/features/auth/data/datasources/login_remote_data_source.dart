@@ -1,15 +1,15 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
-import 'package:pharmacy_app/features/auth/data/models/login_response_model.dart';
 
 import '../../../../core/constants/app_end_points.dart';
 import '../../../../core/constants/request_constants.dart';
 import '../../../../shared/data/models/failure.dart';
 import '../../../../shared/data/network/call_api.dart';
 import '../../../../shared/data/network/dio_client_service.dart';
+import '../models/login_data_model.dart';
 
 abstract class LoginRemoteDataSource {
-  Future<Either<Failure, LoginResponse>> login({
+  Future<Either<Failure, LoginDataResponse>> login({
     required String email,
     required String password,
   });
@@ -22,7 +22,7 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
   final DioClientService _dioClient;
 
   @override
-  Future<Either<Failure, LoginResponse>> login({
+  Future<Either<Failure, LoginDataResponse>> login({
     required String email,
     required String password,
   }) async {
@@ -34,7 +34,7 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
         });
       },
       mapSuccess: (Map<String, dynamic> data) {
-        return LoginResponse.fromJson(data);
+        return LoginDataResponse.fromJson(data);
       },
     );
   }

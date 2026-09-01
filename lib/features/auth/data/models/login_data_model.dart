@@ -1,14 +1,14 @@
 import '../../domian/entities/login_entity.dart';
 
 /// Data-layer payload returned by the login endpoint.
-class LoginData {
+class LoginDataResponse {
   final String token;
   final String? username;
   final String email;
   final String roles;
   final String expiresOn;
 
-  const LoginData({
+  const LoginDataResponse({
     required this.token,
     this.username,
     required this.email,
@@ -16,8 +16,8 @@ class LoginData {
     required this.expiresOn,
   });
 
-  factory LoginData.fromJson(Map<String, dynamic> json) {
-    return LoginData(
+  factory LoginDataResponse.fromJson(Map<String, dynamic> json) {
+    return LoginDataResponse(
       token: json['token'] as String,
       username: json['username'] as String?,
       email: json['email'] as String,
@@ -42,6 +42,6 @@ class LoginData {
         username: username,
         email: email,
         role: roles,
-        expiresOn: DateTime.parse(expiresOn),
+        expiresOn:expiresOn,
       );
 }

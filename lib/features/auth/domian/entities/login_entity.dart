@@ -3,7 +3,7 @@ class AuthEntity {
   final String? username;
   final String email;
   final String role;
-  final DateTime expiresOn;
+  final String? expiresOn;
 
   const AuthEntity({
     required this.token,
