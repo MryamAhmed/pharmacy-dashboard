@@ -39,10 +39,12 @@ class GeneralCubit extends Cubit<GeneralState> with ChangeNotifier {
   }
 
   /// Sets the auth token on the Dio client + session state and persists it.
-  Future<void> setToken(String token) async {
+  Future<void> setToken(String token, {required bool rememberMe}) async {
     _dioClientService.setAuthToken(token);
     emit(state.copyWith(token: token));
-    await _secureStorageService.setJWTAccessToken(token);
+    rememberMe
+        ? await _secureStorageService.setJWTAccessToken(token)
+        : await _secureStorageService.setJWTAccessToken(null);
   }
 
   /// Clears the session: removes the token from Dio, state, and secure storage.
@@ -66,5 +68,16 @@ class GeneralCubit extends Cubit<GeneralState> with ChangeNotifier {
     if (persist) {
       await _localeStorageService.saveThemeMode(mode);
     }
+  }
+
+  Future<bool> restoreToken() async {
+    final token = await _secureStorageService.getJWTAccessToken();
+
+    if (token == null || token.isEmpty) return false;
+
+    _dioClientService.setAuthToken(token);
+    emit(state.copyWith(token: token));
+
+    return true;
   }
 }
