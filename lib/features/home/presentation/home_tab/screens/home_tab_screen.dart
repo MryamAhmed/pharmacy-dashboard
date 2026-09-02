@@ -7,7 +7,6 @@ import 'package:gap/gap.dart';
 import 'package:pharmacy_app/core/constants/app_values.dart';
 import 'package:pharmacy_app/core/themes/app_colors.dart';
 import 'package:pharmacy_app/core/themes/app_text_style.dart';
-import 'package:pharmacy_app/features/home/presentation/home_tab/widgets/recent_activity_widget.dart';
 
 // Project imports:
 import '../../../../../core/constants/app_constants.dart';
@@ -15,6 +14,7 @@ import '../../../../../core/constants/test_keys.dart';
 import '../../../../../core/extensions/build_context_localizations.dart';
 import '../../../../../shared/presentation/widgets/app_loading_widget.dart';
 import '../../../../../shared/presentation/widgets/app_scaffold.dart';
+import '../../../domain/entities/home_summary_entity.dart';
 import '../cubit/home_tab_cubit.dart';
 import '../cubit/home_tab_state.dart';
 import '../widgets/home_dashboard_items_widget.dart';
@@ -42,20 +42,28 @@ class HomeTabScreen extends StatelessWidget {
       mobileBody: BlocBuilder<HomeTabCubit, HomeTabState>(
         builder: (context, state) {
           if (state.isLoading) return const AppLoadingWidget();
-          return const Padding(
+          return Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppPaddings.p24),
             child: SizedBox(
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HomeDashboardItemsWidget(),
-
-                  Gap(AppSpace.s24),
-
-                  QuickActionsWidget(),
-                  Gap(AppSpace.s24),
-                  RecentActivityWidget(),
+                  HomeDashboardItemsWidget(
+                    homeSummaryEntity:
+                        state.homeSummaryEntity ??
+                        const HomeSummaryEntity(
+                          totalDoctors: 0,
+                          totalPharmacies: 0,
+                          totalActiveJobs: 0,
+                          totalApplications: 0,
+                          totalReviews: 0,
+                        ),
+                  ),
+                  const Gap(AppSpace.s24),
+                  const QuickActionsWidget(),
+                  const Gap(AppSpace.s24),
+                  //RecentActivityWidget(),
                 ],
               ),
             ),

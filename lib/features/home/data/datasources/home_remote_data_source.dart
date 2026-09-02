@@ -1,13 +1,16 @@
 // Package imports:
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
+import 'package:pharmacy_app/shared/data/network/call_api.dart';
 
 // Project imports:
+import '../../../../core/constants/app_end_points.dart';
 import '../../../../shared/data/models/failure.dart';
-import '../models/home_summary_response.dart';
+import '../../../../shared/data/network/dio_client_service.dart';
+import '../models/data_home_summary_model.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<Either<Failure, HomeSummaryResponse>> getHomeSummary();
+  Future<Either<Failure, DataHomeSummaryModel>> getHomeSummary();
 }
 
 /// Dummy implementation — no backend endpoint exists yet for the home module.
@@ -19,11 +22,15 @@ abstract class HomeRemoteDataSource {
 /// becomes real.
 @LazySingleton(as: HomeRemoteDataSource)
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
-  const HomeRemoteDataSourceImpl();
+  const HomeRemoteDataSourceImpl({required this.dioClientService});
+  final DioClientService dioClientService;
 
   @override
-  Future<Either<Failure, HomeSummaryResponse>> getHomeSummary() async {
-    await Future<void>.delayed(const Duration(milliseconds: 300));
-    return const Right(HomeSummaryResponse(greeting: 'Welcome back'));
+  Future<Either<Failure, DataHomeSummaryModel>> getHomeSummary() async {
+    return await callApi(
+      request: () => dioClientService.get(url: AppEndPoints.homeSummary),
+      mapSuccess: (Map<String, dynamic> data) =>
+          DataHomeSummaryModel.fromJson(data),
+    );
   }
 }
