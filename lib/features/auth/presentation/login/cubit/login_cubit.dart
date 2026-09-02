@@ -10,6 +10,8 @@ import '../../../../../core/extensions/go_router_navigation_x.dart';
 import '../../../../../core/router/app_routes.dart';
 import '../../../../../core/utils/app_validations.dart';
 import '../../../../../shared/domain/entities/app_error.dart';
+import '../../../../../shared/presentation/cubit/general_cubit.dart';
+import '../../../domian/usecases/login_use_case.dart';
 import 'login_state.dart';
 
 /// Drives the login form.
@@ -19,7 +21,7 @@ import 'login_state.dart';
 /// (data source → repository → use case) into [submit] when a backend exists.
 @injectable
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this._goRouter)
+  LoginCubit(this._goRouter, this.loginUseCase, this.generalCubit)
     : emailController = TextEditingController(),
       passwordController = TextEditingController(),
       super(const LoginState());
@@ -28,6 +30,8 @@ class LoginCubit extends Cubit<LoginState> {
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final LoginUseCase loginUseCase;
+  final GeneralCubit generalCubit;
 
   void onEmailEdited() =>
       emit(state.copyWith(emailFieldError: null, error: null));
@@ -70,13 +74,23 @@ class LoginCubit extends Cubit<LoginState> {
 
     try {
       // Simulated network latency — replace with a real auth call.
-      await Future<void>.delayed(const Duration(milliseconds: 600));
-      if (isClosed) return;
-
-      emit(state.copyWith(isSubmitting: false));
-      // Drops login (and any prior auth screens) from history so the back
-      // button can't return to them once signed in.
-      _goRouter.clearStackAndGo(AppRouteNames.home);
+      final result = await loginUseCase.login(email, password);
+      await result.fold<Future<void>>(
+        (failure) async {
+          emit(state.copyWith(isSubmitting: false, error: failure));
+        },
+        (response) async {
+          await generalCubit.setToken(
+            response.token,
+            rememberMe: state.rememberMe,
+          );
+          if (isClosed) return;
+          emit(state.copyWith(isSubmitting: false));
+          // Drops login (and any prior auth screens) from history so the back
+          // button can't return to them once signed in.
+          _goRouter.clearStackAndGo(AppRouteNames.home);
+        },
+      );
     } catch (_) {
       if (isClosed) return;
       emit(

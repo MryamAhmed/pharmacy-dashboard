@@ -38,19 +38,20 @@ class HomeDashboardItemWidget extends StatelessWidget {
           const Gap(AppSpace.s10),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppText(
                 key: Key(titleKey),
                 text: title,
                 style: AppTextStyles.bold22.copyWith(color: itemColor),
-                textAlign: TextAlign.center,
+              //  textAlign: TextAlign.center,
               ),
               const Gap(AppSpace.s4),
               AppText(
                 key: Key(subTitleKey),
                 text: subTitle,
                 style: AppTextStyles.regular12HintColor,
-                textAlign: TextAlign.center,
+               // textAlign: TextAlign.center,
               ),
             ],
           ),

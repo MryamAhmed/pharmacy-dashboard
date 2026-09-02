@@ -43,20 +43,25 @@ class Failure {
     Map<String, String>? fieldErrors;
     final data = r.data;
 
+    //json => "Invalid email"
     if (data is String && data.trim().isNotEmpty) {
       // Bare-string error body — the entire response is the error message.
       message = data.trim();
     } else if (data is Map<String, dynamic>) {
+      ////{"success": false,"data": "Invalid email"}
       if (data['success'] == false) {
         // Standard envelope: { "success": false, "data": "ERROR_CODE" } or
         // { "success": false, "message": "..." }.
         if (data['data'] is String) {
           code = data['data'] as String;
           message = code;
+      ////{"success": false,"message": "Invalid email"}
         } else if (data['message'] is String) {
           message = data['message'] as String;
         }
-      } else if (r.statusCode == 400 || r.statusCode == 422) {
+      } 
+      //{"username": "Username is required","email": "Invalid email"} and fieldErrors = { "username": "Username is required","email": "Invalid email",};
+      else if (r.statusCode == 400 || r.statusCode == 422) { 
         // Flat field-validation map: { "username": "...", "email": "..." }
         // Values may be a plain String or a List<String> (multiple messages per
         // field). All messages are joined with '\n' so the UI can display them.
