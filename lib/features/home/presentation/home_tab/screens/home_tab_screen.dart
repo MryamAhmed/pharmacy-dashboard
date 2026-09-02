@@ -18,7 +18,6 @@ import '../../../domain/entities/home_summary_entity.dart';
 import '../cubit/home_tab_cubit.dart';
 import '../cubit/home_tab_state.dart';
 import '../widgets/home_dashboard_items_widget.dart';
-import '../widgets/quick_actions_widget.dart';
 
 /// "Home" bottom-nav tab.
 ///
@@ -61,8 +60,8 @@ class HomeTabScreen extends StatelessWidget {
                         ),
                   ),
                   const Gap(AppSpace.s24),
-                  const QuickActionsWidget(),
-                  const Gap(AppSpace.s24),
+                  //const QuickActionsWidget(),
+                  //const Gap(AppSpace.s24),
                   //RecentActivityWidget(),
                 ],
               ),
