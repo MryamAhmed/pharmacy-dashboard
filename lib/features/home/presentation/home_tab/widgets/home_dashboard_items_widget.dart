@@ -5,10 +5,12 @@ import '../../../../../core/constants/app_values.dart';
 import '../../../../../core/constants/test_keys.dart';
 import '../../../../../core/extensions/build_context_localizations.dart';
 import '../../../../../core/themes/app_colors.dart';
+import '../../../domain/entities/home_summary_entity.dart';
 import 'home_dashboard_item_widget.dart';
 
 class HomeDashboardItemsWidget extends StatelessWidget {
-  const HomeDashboardItemsWidget({super.key});
+  const HomeDashboardItemsWidget({super.key, required this.homeSummaryEntity});
+  final HomeSummaryEntity homeSummaryEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class HomeDashboardItemsWidget extends StatelessWidget {
                 titleKey: TestKeys.homeDashboardTitle1,
                 subTitle: context.l10n.homeDashboardUsersSubtitle,
                 subTitleKey: TestKeys.homeDashboardSubTitle1,
-                title: '1,248',
+                title: homeSummaryEntity.totalDoctors.toString(),
               ),
             ),
             const Gap(AppSpace.s12),
@@ -32,7 +34,7 @@ class HomeDashboardItemsWidget extends StatelessWidget {
                 titleKey: TestKeys.homeDashboardTitle2,
                 subTitle: context.l10n.homeDashboardActiveJobsSubtitle,
                 subTitleKey: TestKeys.homeDashboardSubTitle2,
-                title: '342',
+                title: homeSummaryEntity.totalActiveJobs.toString(),
               ),
             ),
           ],
@@ -46,7 +48,7 @@ class HomeDashboardItemsWidget extends StatelessWidget {
                 titleKey: TestKeys.homeDashboardTitle3,
                 subTitle: context.l10n.homeDashboardPharmaciesSubtitle,
                 subTitleKey: TestKeys.homeDashboardSubTitle3,
-                title: '89',
+                title: homeSummaryEntity.totalPharmacies.toString(),
               ),
             ),
             const Gap(AppSpace.s12),
@@ -56,7 +58,7 @@ class HomeDashboardItemsWidget extends StatelessWidget {
                 titleKey: TestKeys.homeDashboardTitle4,
                 subTitle: context.l10n.homeDashboardApplicationsSubtitle,
                 subTitleKey: TestKeys.homeDashboardSubTitle4,
-                title: '4,102',
+                title: homeSummaryEntity.totalApplications.toString(),
               ),
             ),
           ],

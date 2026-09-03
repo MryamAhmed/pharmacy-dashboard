@@ -8,14 +8,12 @@ import 'package:gap/gap.dart';
 import '../../../../../../core/constants/app_values.dart';
 import '../../../../../../core/constants/test_keys.dart';
 import '../../../../../../core/extensions/build_context_localizations.dart';
-import '../../../../../../core/extensions/date_time_x.dart';
 import '../../../../../../core/themes/app_colors.dart';
 import '../../../../../../core/themes/app_text_style.dart';
-import '../../../../../../shared/presentation/widgets/app_button_widget.dart';
+import '../../../../../../core/utils/date_converter.dart';
 import '../../../../../../shared/presentation/widgets/app_text.dart';
 import '../../../../domain/entities/rate_entity.dart';
 import '../cubit/rate_cubit.dart';
-import 'text_avatar_widget.dart';
 
 /// A single pending review shown in the Rate tab's list.
 ///
@@ -49,10 +47,11 @@ class RateCardWidget extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      TextAvatarWidget(
-                        title: rate.pharmacyName.isEmpty
-                            ? ''
-                            : rate.pharmacyName[0].toUpperCase(),
+                      Image.network(
+                        rate.profilePicture ?? '',
+                        width: 40.w,
+                        height: 40.h,
+                        fit: BoxFit.cover,
                       ),
                       const Gap(AppSpace.s12),
                       Column(
@@ -64,7 +63,7 @@ class RateCardWidget extends StatelessWidget {
                                 key: ValueKey(
                                   '${TestKeys.pharmacyRateLabel}_${rate.id}',
                                 ),
-                                text: rate.pharmacyName,
+                                text: rate.reviewerName ?? '',
                                 style: AppTextStyles.bold12,
                                 textAlign: TextAlign.center,
                               ),
@@ -73,7 +72,9 @@ class RateCardWidget extends StatelessWidget {
                                 key: ValueKey(
                                   '${TestKeys.userRateLabel}_${rate.id}',
                                 ),
-                                text: context.l10n.rateForUser(rate.userName),
+                                text: context.l10n.rateForUser(
+                                  rate.reviewerName ?? '',
+                                ),
                                 style: AppTextStyles.regular10Hintstyle,
                                 textAlign: TextAlign.center,
                               ),
@@ -83,7 +84,7 @@ class RateCardWidget extends StatelessWidget {
                             key: ValueKey(
                               '${TestKeys.rateStarsLabel}_${rate.id}',
                             ),
-                            text: List.filled(rate.rate, '★').join(' '),
+                            text: List.filled(rate.rate ?? 0, '★').join(' '),
                             style: AppTextStyles.regular14RateStarsColor,
                             textAlign: TextAlign.center,
                           ),
@@ -93,7 +94,7 @@ class RateCardWidget extends StatelessWidget {
                   ),
                   AppText(
                     key: ValueKey('${TestKeys.rateDurationLabel}_${rate.id}'),
-                    text: rate.dateTime.relativeTime(context),
+                    text: timeAgo(rate.createdAt ?? ''),
                     style: AppTextStyles.regular10Hintstyle,
                     textAlign: TextAlign.center,
                   ),
@@ -105,7 +106,7 @@ class RateCardWidget extends StatelessWidget {
               width: double.infinity,
               child: AppText(
                 key: ValueKey('${TestKeys.rateDescriptionLabel}_${rate.id}'),
-                text: rate.reviewText,
+                text: rate.comment ?? '',
                 style: AppTextStyles.regular12,
                 textAlign: TextAlign.left,
                 maxLines: 1,
@@ -113,15 +114,6 @@ class RateCardWidget extends StatelessWidget {
               ),
             ),
             const Gap(AppSpace.s12),
-            AppButtonWidget(
-              height: 32.h,
-              width: 80.w,
-              radius: 8.r,
-              key: ValueKey('${TestKeys.rateButtonLabel}_${rate.id}'),
-              text: context.l10n.rateApproveButton,
-              onPressed: () {},
-              style: AppTextStyles.bold10White,
-            ),
           ],
         ),
       ),

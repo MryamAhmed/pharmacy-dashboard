@@ -1,4 +1,6 @@
 // Package imports:
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -17,12 +19,20 @@ class HomeTabCubit extends Cubit<HomeTabState> {
   final GetHomeSummaryUseCase _getHomeSummaryUseCase;
 
   Future<void> _load() async {
+    log("message _load");
     final result = await _getHomeSummaryUseCase();
     if (isClosed) return;
     result.fold(
-      (error) => emit(state.copyWith(isLoading: false, error: error)),
-      (summary) =>
-          emit(state.copyWith(isLoading: false, greeting: summary.greeting)),
+      (error) {
+         emit(state.copyWith(isLoading: false, error: error));
+         log("message error: $error");
+         },
+      (summary) {
+          log("message summary1111: $summary");
+
+          emit(state.copyWith(isLoading: false, homeSummaryEntity: summary));
+          log("message summary: $summary");
+        }
     );
   }
 }

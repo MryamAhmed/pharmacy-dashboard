@@ -1,23 +1,28 @@
 // Project imports:
-import '../../../../core/enums/rate_status.dart';
 
 /// A single pending pharmacy rating awaiting admin review.
 class RateEntity {
   const RateEntity({
     required this.id,
-    required this.pharmacyName,
-    required this.userName,
-    required this.dateTime,
-    required this.status,
-    required this.reviewText,
+    required this.comment,
+    required this.profilePicture,
+    required this.reviewerName,
+    required this.reviewerPosition,
+    required this.reviewerId,
     required this.rate,
+    required this.revieweeId,
+    required this.revieweeName,
+    required this.createdAt,
   });
 
-  final String id;
-  final String pharmacyName;
-  final String userName;
-  final DateTime dateTime;
-  final RateStatus status;
-  final String reviewText;
-  final int rate;
+  final String? id;
+  final String? comment;
+  final String? profilePicture;
+  final String? reviewerName;
+  final String? reviewerPosition;
+  final int? rate;
+  final String? reviewerId;
+  final String? revieweeId;
+  final String? revieweeName;
+  final String? createdAt;
 }
