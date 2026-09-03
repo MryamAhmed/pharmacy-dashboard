@@ -3,12 +3,14 @@ import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import '../../../../core/enums/rate_status.dart';
+import '../../../../core/constants/app_end_points.dart';
 import '../../../../shared/data/models/failure.dart';
-import '../models/rate_response.dart';
+import '../../../../shared/data/network/call_api.dart';
+import '../../../../shared/data/network/dio_client_service.dart';
+import '../models/data_rate_model.dart';
 
 abstract class RateRemoteDataSource {
-  Future<Either<Failure, List<RateResponse>>> getRates();
+  Future<Either<Failure, List<DataRateModel>>> getRates();
 }
 
 /// Dummy implementation — no backend endpoint exists yet for the Rate tab.
@@ -20,66 +22,14 @@ abstract class RateRemoteDataSource {
 /// becomes real.
 @LazySingleton(as: RateRemoteDataSource)
 class RateRemoteDataSourceImpl implements RateRemoteDataSource {
-  const RateRemoteDataSourceImpl();
+  RateRemoteDataSourceImpl({required this.dioClientService});
+  DioClientService dioClientService = DioClientService();
 
   @override
-  Future<Either<Failure, List<RateResponse>>> getRates() async {
-    await Future<void>.delayed(const Duration(seconds: 1));
-    return Right([
-      RateResponse(
-        id: '1',
-        pharmacyName: 'Al Shifa Pharmacy',
-        userName: 'Ahmed Youssef',
-        dateTime: DateTime(2026, 7, 15, 10, 30),
-        status: RateStatus.pending,
-        reviewText: 'Great service and fast delivery.',
-        rate: 5,
-      ),
-      RateResponse(
-        id: '2',
-        pharmacyName: 'Al Ezaby Pharmacy',
-        userName: 'Mona Hassan',
-        dateTime: DateTime(2026, 7, 14, 16, 45),
-        status: RateStatus.approve,
-        reviewText: 'Good prices, friendly staff.',
-        rate: 4,
-      ),
-      RateResponse(
-        id: '3',
-        pharmacyName: 'Seif Pharmacy',
-        userName: 'Karim Adel',
-        dateTime: DateTime(2026, 7, 13, 9, 15),
-        status: RateStatus.reject,
-        reviewText: 'Review contained inappropriate language.',
-        rate: 1,
-      ),
-      RateResponse(
-        id: '4',
-        pharmacyName: 'Al Dawaa Pharmacy',
-        userName: 'Sara Ali',
-        dateTime: DateTime.now().subtract(const Duration(hours: 3)),
-        status: RateStatus.pending,
-        reviewText: 'Fast and friendly service, highly recommend.',
-        rate: 4,
-      ),
-      RateResponse(
-        id: '5',
-        pharmacyName: 'Nahdi Pharmacy',
-        userName: 'Omar Khaled',
-        dateTime: DateTime.now().subtract(const Duration(minutes: 20)),
-        status: RateStatus.pending,
-        reviewText: 'Average experience, could be faster.',
-        rate: 3,
-      ),
-      RateResponse(
-        id: '6',
-        pharmacyName: 'United Pharmacy',
-        userName: 'Laila Nasser',
-        dateTime: DateTime.now().subtract(const Duration(days: 2)),
-        status: RateStatus.pending,
-        reviewText: 'Staff was rude and unhelpful.',
-        rate: 2,
-      ),
-    ]);
+  Future<Either<Failure, List<DataRateModel>>> getRates() async {
+    return callApiList(
+      request: () => dioClientService.get(url: AppEndPoints.reviews),
+      mapItem: (data) => DataRateModel.fromJson(data),
+    );
   }
 }
