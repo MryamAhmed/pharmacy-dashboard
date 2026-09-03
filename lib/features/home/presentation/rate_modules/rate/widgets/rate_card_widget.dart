@@ -11,7 +11,6 @@ import '../../../../../../core/extensions/build_context_localizations.dart';
 import '../../../../../../core/themes/app_colors.dart';
 import '../../../../../../core/themes/app_text_style.dart';
 import '../../../../../../core/utils/date_converter.dart';
-import '../../../../../../shared/presentation/widgets/app_button_widget.dart';
 import '../../../../../../shared/presentation/widgets/app_text.dart';
 import '../../../../domain/entities/rate_entity.dart';
 import '../cubit/rate_cubit.dart';
@@ -115,15 +114,6 @@ class RateCardWidget extends StatelessWidget {
               ),
             ),
             const Gap(AppSpace.s12),
-            AppButtonWidget(
-              height: 32.h,
-              width: 80.w,
-              radius: 8.r,
-              key: ValueKey('${TestKeys.rateButtonLabel}_${rate.id}'),
-              text: context.l10n.rateApproveButton,
-              onPressed: () {},
-              style: AppTextStyles.bold10White,
-            ),
           ],
         ),
       ),
