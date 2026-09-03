@@ -10,6 +10,7 @@ import '../../../../../../core/constants/test_keys.dart';
 import '../../../../../../core/extensions/build_context_localizations.dart';
 import '../../../../../../core/themes/app_colors.dart';
 import '../../../../../../core/themes/app_text_style.dart';
+import '../../../../../../core/utils/date_converter.dart';
 import '../../../../../../shared/presentation/widgets/app_button_widget.dart';
 import '../../../../../../shared/presentation/widgets/app_text.dart';
 import '../../../../domain/entities/rate_entity.dart';
@@ -94,7 +95,7 @@ class RateCardWidget extends StatelessWidget {
                   ),
                   AppText(
                     key: ValueKey('${TestKeys.rateDurationLabel}_${rate.id}'),
-                    text: rate.createdAt ?? '',
+                    text: timeAgo(rate.createdAt ?? ''),
                     style: AppTextStyles.regular10Hintstyle,
                     textAlign: TextAlign.center,
                   ),
