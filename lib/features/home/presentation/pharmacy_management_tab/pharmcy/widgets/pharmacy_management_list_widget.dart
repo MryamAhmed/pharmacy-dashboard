@@ -9,10 +9,11 @@ import '../../../../../../core/constants/app_values.dart';
 import '../../../../../../core/constants/test_keys.dart';
 import '../../../../../../core/themes/app_text_style.dart';
 import '../../../../../../shared/presentation/widgets/app_text.dart';
+import '../cubit/pharmacy_states.dart';
 
 class PharmacyManagementListWidget extends StatelessWidget {
-  const PharmacyManagementListWidget({super.key});
-
+  const PharmacyManagementListWidget({super.key, required this.state});
+  final PharmacyState state;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,7 +26,7 @@ class PharmacyManagementListWidget extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const Gap(AppSpace.s12),
-        const FiltersTap(),
+        FiltersTap(state: state),
         const Gap(AppSpace.s12),
         const SearchBarWidget(),
         const Gap(AppSpace.s12),

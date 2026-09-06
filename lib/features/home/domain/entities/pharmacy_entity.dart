@@ -5,10 +5,12 @@ class PharmacyEntity {
     this.pharmacyPhoneNumber,
     this.logo,
     this.taxCard,
+    this.status,
   });
   String? id;
   String? pharmacyName;
   String? pharmacyPhoneNumber;
   String? logo;
   String? taxCard;
+  String? status;
 }

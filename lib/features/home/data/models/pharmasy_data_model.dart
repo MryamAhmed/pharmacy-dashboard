@@ -7,6 +7,7 @@ class PharmasyDataModel {
   String? pharmacyPhoneNumber;
   String? logo;
   String? taxCard;
+  String? status;
 
   PharmasyDataModel({
     this.id,
@@ -24,6 +25,7 @@ class PharmasyDataModel {
     pharmacyPhoneNumber = json['pharmacyPhoneNumber'];
     logo = json['logo'];
     taxCard = json['taxCard'];
+    status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
@@ -34,6 +36,7 @@ class PharmasyDataModel {
     data['pharmacyPhoneNumber'] = this.pharmacyPhoneNumber;
     data['logo'] = this.logo;
     data['taxCard'] = this.taxCard;
+    data['status'] = this.status;
     return data;
   }
 
@@ -45,6 +48,7 @@ class PharmasyDataModel {
       pharmacyPhoneNumber: pharmacyPhoneNumber,
       logo: logo,
       taxCard: taxCard,
+      status: status,
     );
   }
 }
