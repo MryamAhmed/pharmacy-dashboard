@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:pharmacy_app/features/home/domain/entities/pharmacy_entity.dart';
 
 // Project imports:
 import '../../../../../../../core/constants/app_values.dart';
@@ -14,8 +15,8 @@ import '../../../rate_modules_tab/rate/widgets/text_avatar_widget.dart'
     show TextAvatarWidget;
 
 class PharmacyCardWidget extends StatelessWidget {
-  const PharmacyCardWidget({super.key});
-
+  const PharmacyCardWidget({super.key, required this.pharmacy});
+  final PharmacyEntity pharmacy;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -47,7 +48,7 @@ class PharmacyCardWidget extends StatelessWidget {
                               flex: 3,
                               child: AppText(
                                 key: const ValueKey(TestKeys.pharmacyName),
-                                text: "Al Nil Pharmacy",
+                                text: pharmacy.pharmacyName ?? '',
                                 style: AppTextStyles.bold12,
                                 textAlign: TextAlign.start,
                               ),

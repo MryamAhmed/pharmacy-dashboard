@@ -30,7 +30,12 @@ class PharmacyManagementListWidget extends StatelessWidget {
         const Gap(AppSpace.s12),
         const SearchBarWidget(),
         const Gap(AppSpace.s12),
-        const PharmacyCardWidget(),
+        ListView.separated(
+          itemCount: state.pharmacies.length,
+          separatorBuilder: (_, _) => const Gap(AppSpace.s12),
+          itemBuilder: (_, index) =>
+              PharmacyCardWidget(pharmacy: state.pharmacies[index]),
+        ),
       ],
     );
   }
