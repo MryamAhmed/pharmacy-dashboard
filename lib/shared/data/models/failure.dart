@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 
 // Project imports:
 import '../../../core/constants/app_error_codes.dart';
+import '../network/internet_connection_utility.dart';
 import '../../domain/entities/app_error.dart';
 
 /// Data-layer failure type returned by data sources via `Either<Failure, T>`.
@@ -30,11 +31,22 @@ class Failure {
 
   factory Failure.local(String code) => Failure(code: code);
 
-  factory Failure.fromException(Object e) {
+  static Future<Failure> fromException(Object e) async {
     if (e is DioException && e.response != null) {
       return Failure.fromResponse(e.response!);
     }
-    return const Failure(isNetwork: true);
+
+    if (e is DioException) {
+      final hasInternetAccess =
+          await InternetConnectionUtility.hasInternetAccess();
+      if (!hasInternetAccess) {
+        return const Failure(isNetwork: true);
+      }
+    }
+
+    // The request failed, but internet access is still available or the error
+    // was not a Dio transport error, so show the generic fallback message.
+    return const Failure();
   }
 
   factory Failure.fromResponse(Response<dynamic> r) {
@@ -43,20 +55,25 @@ class Failure {
     Map<String, String>? fieldErrors;
     final data = r.data;
 
+    //json => "Invalid email"
     if (data is String && data.trim().isNotEmpty) {
       // Bare-string error body — the entire response is the error message.
       message = data.trim();
     } else if (data is Map<String, dynamic>) {
+      ////{"success": false,"data": "Invalid email"}
       if (data['success'] == false) {
         // Standard envelope: { "success": false, "data": "ERROR_CODE" } or
         // { "success": false, "message": "..." }.
         if (data['data'] is String) {
           code = data['data'] as String;
           message = code;
+          ////{"success": false,"message": "Invalid email"}
         } else if (data['message'] is String) {
           message = data['message'] as String;
         }
-      } else if (r.statusCode == 400 || r.statusCode == 422) {
+      }
+      //{"username": "Username is required","email": "Invalid email"} and fieldErrors = { "username": "Username is required","email": "Invalid email",};
+      else if (r.statusCode == 400 || r.statusCode == 422) {
         // Flat field-validation map: { "username": "...", "email": "..." }
         // Values may be a plain String or a List<String> (multiple messages per
         // field). All messages are joined with '\n' so the UI can display them.
