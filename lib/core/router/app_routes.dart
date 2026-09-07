@@ -9,6 +9,7 @@ abstract final class AppRoutes {
   static const String login = '/login';
   static const String home = '/home';
   static const String rateDetails = '/rate-details';
+  static const String pharmacyDetails = '/pharmacy-details';
 }
 
 abstract final class AppRouteNames {
@@ -18,4 +19,5 @@ abstract final class AppRouteNames {
   static const String login = 'login';
   static const String home = 'home';
   static const String rateDetails = 'rateDetails';
+  static const String pharmacyDetails = 'pharmacyDetails';
 }

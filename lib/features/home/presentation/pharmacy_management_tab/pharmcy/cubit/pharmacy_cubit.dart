@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../../core/enums/pharmacy_filter.dart';
+import '../../../../../../core/router/app_routes.dart';
 import '../../../../../../shared/domain/entities/app_error.dart';
 import '../../../../domain/entities/pharmacy_entity.dart';
 import '../../../../domain/usecases/pharmacy_use_case.dart';
@@ -36,12 +37,10 @@ class PharmacyCubit extends Cubit<PharmacyState> {
     }
   }
 
- void selectFilter(PharmacyFilter filter) =>
+  void selectFilter(PharmacyFilter filter) =>
       emit(state.copyWith(selectedFilter: filter));
 
-
-  //open pharmacy details
   void openPharmacyDetails(PharmacyEntity pharmacy) {
-    //  _goRouter.pushNamed(AppRouteNames.pharmacyDetails, extra: pharmacy);
+    _goRouter.pushNamed(AppRouteNames.rateDetails, extra: pharmacy);
   }
 }

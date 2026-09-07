@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 // Project imports:
 import '../../features/auth/presentation/login/cubit/login_cubit.dart';
 import '../../features/auth/presentation/login/screens/login_screen.dart';
+import '../../features/home/domain/entities/pharmacy_entity.dart';
 import '../../features/home/presentation/home_shell/screens/home_shell_screen.dart';
 import '../../features/home/domain/entities/rate_entity.dart';
 import '../../features/home/presentation/home_tab/cubit/home_tab_cubit.dart';
@@ -77,6 +78,19 @@ final GoRouter appRouter = GoRouter(
           create: (_) => getIt.get<RateDetailsCubit>(
             param1: state.extra! as RateEntity,
           ),
+          child: const RateDetailsScreen(key: Key(TestKeys.rateDetailsPage)),
+        ),
+      ),
+    ),
+
+        GoRoute(
+      path: AppRoutes.pharmacyDetails,
+      name: AppRouteNames.pharmacyDetails,
+      pageBuilder: (context, state) => appPage(
+        key: state.pageKey,
+        child: BlocProvider(
+          create: (_) =>
+              getIt.get<PharmacyCubit>(param1: state.extra! as PharmacyEntity),
           child: const RateDetailsScreen(key: Key(TestKeys.rateDetailsPage)),
         ),
       ),

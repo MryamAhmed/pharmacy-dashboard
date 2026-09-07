@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:pharmacy_app/features/home/domain/entities/pharmacy_entity.dart';
@@ -13,6 +14,7 @@ import '../../../../../../../shared/presentation/widgets/app_text.dart';
 import '../../../../../../core/constants/test_keys.dart';
 import '../../../rate_modules_tab/rate/widgets/text_avatar_widget.dart'
     show TextAvatarWidget;
+import '../cubit/pharmacy_cubit.dart';
 
 class PharmacyCardWidget extends StatelessWidget {
   const PharmacyCardWidget({super.key, required this.pharmacy});
@@ -21,7 +23,7 @@ class PharmacyCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       key: const ValueKey(TestKeys.pharmacyCardItem),
-      onTap: () {},
+      onTap: () => context.read<PharmacyCubit>().openPharmacyDetails(pharmacy),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(AppPaddings.p12),
