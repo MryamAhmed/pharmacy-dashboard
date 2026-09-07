@@ -49,8 +49,8 @@ class RateCardWidget extends StatelessWidget {
                     children: [
                       Image.network(
                         rate.profilePicture ?? '',
-                        width: 40.w,
-                        height: 40.h,
+                        width: 40.spMin,
+                        height: 40.spMin,
                         fit: BoxFit.cover,
                       ),
                       const Gap(AppSpace.s12),
