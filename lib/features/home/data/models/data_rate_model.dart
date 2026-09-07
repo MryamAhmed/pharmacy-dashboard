@@ -1,3 +1,4 @@
+import '../../../../core/constants/api_param_constatnts.dart';
 import '../../domain/entities/rate_entity.dart';
 
 class DataRateModel {
@@ -26,30 +27,30 @@ class DataRateModel {
   });
 
   DataRateModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    comment = json['comment'];
-    profilePicture = json['profilePicture'];
-    reviewerName = json['reviewerName'];
-    reviewerPosition = json['reviewerPosition'];
-    rate = json['rate'];
-    reviewerId = json['reviewerId'];
-    revieweeId = json['revieweeId'];
-    revieweeName = json['revieweeName'];
-    createdAt = json['createdAt'];
+    id = json[ApiParamConstants.id];
+    comment = json[ApiParamConstants.comment];
+    profilePicture = json[ApiParamConstants.profilePicture];
+    reviewerName = json[ApiParamConstants.reviewerName];
+    reviewerPosition = json[ApiParamConstants.reviewerPosition];
+    rate = json[ApiParamConstants.rate];
+    reviewerId = json[ApiParamConstants.reviewerId];
+    revieweeId = json[ApiParamConstants.revieweeId];
+    revieweeName = json[ApiParamConstants.revieweeName];
+    createdAt = json[ApiParamConstants.createdAt];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['comment'] = this.comment;
-    data['profilePicture'] = this.profilePicture;
-    data['reviewerName'] = this.reviewerName;
-    data['reviewerPosition'] = this.reviewerPosition;
-    data['rate'] = this.rate;
-    data['reviewerId'] = this.reviewerId;
-    data['revieweeId'] = this.revieweeId;
-    data['revieweeName'] = this.revieweeName;
-    data['createdAt'] = this.createdAt;
+    data[ApiParamConstants.id] = this.id;
+    data[ApiParamConstants.comment] = this.comment;
+    data[ApiParamConstants.profilePicture] = this.profilePicture;
+    data[ApiParamConstants.reviewerName] = this.reviewerName;
+    data[ApiParamConstants.reviewerPosition] = this.reviewerPosition;
+    data[ApiParamConstants.rate] = this.rate;
+    data[ApiParamConstants.reviewerId] = this.reviewerId;
+    data[ApiParamConstants.revieweeId] = this.revieweeId;
+    data[ApiParamConstants.revieweeName] = this.revieweeName;
+    data[ApiParamConstants.createdAt] = this.createdAt;
     return data;
   }
 
