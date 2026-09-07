@@ -14,7 +14,7 @@ part 'home_tab_state.freezed.dart';
 abstract class HomeTabState with _$HomeTabState {
   const factory HomeTabState({
     @Default(true) bool isLoading,
-    HomeSummaryEntity homeSummaryEntity,
+    HomeSummaryEntity? homeSummaryEntity,
 
     /// Kept as the raw domain [AppError] (not a display string) — only the
     /// screen has a `BuildContext` to resolve it via `AppErrorX.localized()`.
