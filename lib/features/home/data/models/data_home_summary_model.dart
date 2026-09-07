@@ -1,4 +1,5 @@
 // Project imports:
+import '../../../../core/constants/api_param_constatnts.dart';
 import '../../domain/entities/home_summary_entity.dart';
 
 /// Data-layer shape of the home summary response.
@@ -17,18 +18,18 @@ class DataHomeSummaryModel {
   final int totalReviews;
   factory DataHomeSummaryModel.fromJson(Map<String, dynamic> json) =>
       DataHomeSummaryModel(
-        totalDoctors: json['totalDoctors'] ,
-        totalPharmacies: json['totalPharmacies'] ,
-        totalActiveJobs: json['totalActiveJobs'] ,
-        totalApplications: json['totalApplications'],
-        totalReviews: json['totalReviews'],
+        totalDoctors: json[ApiParamConstants.totalDoctors],
+        totalPharmacies: json[ApiParamConstants.totalPharmacies],
+        totalActiveJobs: json[ApiParamConstants.totalActiveJobs],
+        totalApplications: json[ApiParamConstants.totalApplications],
+        totalReviews: json[ApiParamConstants.totalReviews],
       );
 
   HomeSummaryEntity toDomain() => HomeSummaryEntity(
-        totalDoctors: totalDoctors,
-        totalPharmacies: totalPharmacies,
-        totalActiveJobs: totalActiveJobs,
-        totalApplications: totalApplications,
-        totalReviews: totalReviews,
-      );
+    totalDoctors: totalDoctors,
+    totalPharmacies: totalPharmacies,
+    totalActiveJobs: totalActiveJobs,
+    totalApplications: totalApplications,
+    totalReviews: totalReviews,
+  );
 }

@@ -42,7 +42,7 @@ Future<Either<Failure, T>> callApi<T>({
     // Direct format
     return Right(mapSuccess(body));
   } catch (e) {
-    return Left(Failure.fromException(e));
+    return Left(await Failure.fromException(e));
   }
 }
 
@@ -83,7 +83,7 @@ Future<Either<Failure, List<T>>> callApiList<T>({
       rawList.whereType<Map<String, dynamic>>().map(mapItem).toList(),
     );
   } catch (e) {
-    return Left(Failure.fromException(e));
+    return Left(await Failure.fromException(e));
   }
 }
 
@@ -103,6 +103,6 @@ Future<Either<Failure, Unit>> callApiNoData({
     }
     return const Right(unit);
   } catch (e) {
-    return Left(Failure.fromException(e));
+    return Left(await Failure.fromException(e));
   }
 }
