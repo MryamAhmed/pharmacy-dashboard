@@ -1,3 +1,4 @@
+import '../../../../core/constants/api_param_constatnts.dart';
 import '../../domian/entities/login_entity.dart';
 
 /// Data-layer payload returned by the login endpoint.
@@ -18,30 +19,30 @@ class LoginDataResponse {
 
   factory LoginDataResponse.fromJson(Map<String, dynamic> json) {
     return LoginDataResponse(
-      token: json['token'] as String,
-      username: json['username'] as String?,
-      email: json['email'] as String,
-      roles: json['roles'] as String,
-      expiresOn: json['expiresOn'] as String,
+      token: json[ApiParamConstants.token] as String,
+      username: json[ApiParamConstants.username] as String?,
+      email: json[ApiParamConstants.email] as String,
+      roles: json[ApiParamConstants.roles] as String,
+      expiresOn: json[ApiParamConstants.expiresOn] as String,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'token': token,
-      'username': username,
-      'email': email,
-      'roles': roles,
-      'expiresOn': expiresOn,
+      ApiParamConstants.token: token,
+      ApiParamConstants.username: username,
+      ApiParamConstants.email: email,
+      ApiParamConstants.roles: roles,
+      ApiParamConstants.expiresOn: expiresOn,
     };
   }
 
   /// Converts the backend login payload into the domain auth entity.
   AuthEntity toDomain() => AuthEntity(
-        token: token,
-        username: username,
-        email: email,
-        role: roles,
-        expiresOn:expiresOn,
-      );
+    token: token,
+    username: username,
+    email: email,
+    role: roles,
+    expiresOn: expiresOn,
+  );
 }
