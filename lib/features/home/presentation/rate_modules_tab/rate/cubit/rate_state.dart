@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
 import '../../../../../../core/enums/rate_rating_filter.dart';
-import '../../../../../../core/enums/rate_status.dart';
 import '../../../../../../shared/domain/entities/app_error.dart';
 import '../../../../domain/entities/rate_entity.dart';
 
@@ -27,15 +26,14 @@ abstract class RateState with _$RateState {
     AppError? error,
   }) = _RateState;
 
-  /// Reviews still awaiting admin approval — what this tab is named after.
-  List<RateEntity> get pendingRates =>
-      rates.where((r) => r.status == RateStatus.pending).toList();
+  /// Reviews returned by the pending-reviews endpoint.
+  List<RateEntity> get pendingRates => rates;
 
   /// [pendingRates] narrowed further by [selectedFilter].
   List<RateEntity> get filteredRates =>
-      pendingRates.where((r) => selectedFilter.matches(r.rate)).toList();
+      pendingRates.where((r) => selectedFilter.matches(r.rate ?? 0)).toList();
 
   /// How many [pendingRates] fall into [filter] — used for each tab's count.
   int countFor(RateRatingFilter filter) =>
-      pendingRates.where((r) => filter.matches(r.rate)).length;
+      pendingRates.where((r) => filter.matches(r.rate ?? 0)).length;
 }
