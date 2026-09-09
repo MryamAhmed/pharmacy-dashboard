@@ -83,5 +83,9 @@
   "rateDetailsPreviousRatingsLabel": "تقييماته السابقة:",
   "rateDetailsReviewTextLabel": "نص المراجعة",
   "rateDetailsRatingForLabel": "التقييم لـ",
-  "rateDetailsRatingGivenLabel": "التقييم المُعطى"
+  "rateDetailsRatingGivenLabel": "التقييم المُعطى",
+  "searchHint": "أبحث",
+  "rateFilterVerified":"مُتحقَّق منه",
+  "rateFilterPending":"قيد الانتظار",
+  "rateFilterSuspended":"معلق"
 }
