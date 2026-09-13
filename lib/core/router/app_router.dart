@@ -12,9 +12,10 @@ import '../../features/auth/presentation/login/screens/login_screen.dart';
 import '../../features/home/presentation/home_shell/screens/home_shell_screen.dart';
 import '../../features/home/domain/entities/rate_entity.dart';
 import '../../features/home/presentation/home_tab/cubit/home_tab_cubit.dart';
-import '../../features/home/presentation/rate_modules/rate/cubit/rate_cubit.dart';
-import '../../features/home/presentation/rate_modules/rate_details/presentation/rate_details/cubit/rate_details_cubit.dart';
-import '../../features/home/presentation/rate_modules/rate_details/presentation/rate_details/screens/rate_details_screen.dart';
+import '../../features/home/presentation/pharmacy_management_tab/pharmcy/cubit/pharmacy_cubit.dart';
+import '../../features/home/presentation/rate_modules_tab/rate/cubit/rate_cubit.dart';
+import '../../features/home/presentation/rate_modules_tab/rate_details/presentation/rate_details/cubit/rate_details_cubit.dart';
+import '../../features/home/presentation/rate_modules_tab/rate_details/presentation/rate_details/screens/rate_details_screen.dart';
 import '../../features/splash/presentation/cubit/splash_cubit.dart';
 import '../../features/splash/presentation/screens/splash_screen.dart';
 import '../../shared/presentation/cubit/general_cubit.dart';
@@ -61,6 +62,7 @@ final GoRouter appRouter = GoRouter(
           providers: [
             BlocProvider(create: (_) => getIt.get<HomeTabCubit>()),
             BlocProvider(create: (_) => getIt.get<RateCubit>()),
+            BlocProvider(create: (_) => getIt.get<PharmacyCubit>()),
           ],
           child: const HomeShellScreen(key: Key(TestKeys.homeShellScaffold)),
         ),
