@@ -26,7 +26,7 @@ class RateGivenWidget extends StatelessWidget {
 
         AppText(
           key: const Key(TestKeys.rateDetailsStars),
-          text: List.filled(rate.rate, '★').join(' '),
+          text: List.filled(rate.rate ?? 0, '★').join(' '),
           style: AppTextStyles.regular28RateStarsColor,
         ),
       ],

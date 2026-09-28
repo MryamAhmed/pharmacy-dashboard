@@ -5,7 +5,6 @@ import 'package:pharmacy_app/features/home/domain/entities/rate_entity.dart';
 import '../../../../../../../../core/constants/app_values.dart';
 import '../../../../../../../../core/constants/test_keys.dart';
 import '../../../../../../../../core/extensions/build_context_localizations.dart';
-import '../../../../../../../../core/extensions/date_time_x.dart';
 import '../../../../../../../../core/themes/app_colors.dart';
 import '../../../../../../../../core/themes/app_text_style.dart';
 import '../../../../../../../../shared/presentation/widgets/app_text.dart';
@@ -29,7 +28,7 @@ class RateDetailsPendingWidget extends StatelessWidget {
       child: AppText(
         key: const Key(TestKeys.rateDetailsDate),
         text: context.l10n.rateDetailsPendingApproval(
-          rate.dateTime.relativeTime(context),
+          rate.createdAt ?? '',
         ),
         style: AppTextStyles.regular12DashboardItem3Color,
       ),

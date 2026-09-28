@@ -28,9 +28,9 @@ class RateDetailsPharmacyCardWidget extends StatelessWidget {
           TextAvatarWidget(
             size: 44.spMin,
             style: AppTextStyles.bold16PrimaryColor,
-            title: rate.pharmacyName.isEmpty
-                ? ''
-                : rate.pharmacyName[0].toUpperCase(),
+            title: rate.revieweeName
+                ?? ''
+              
           ),
           const Gap(AppSpace.s12),
           Column(
@@ -38,7 +38,7 @@ class RateDetailsPharmacyCardWidget extends StatelessWidget {
             children: [
               AppText(
                 key: const Key(TestKeys.rateDetailsPharmacyName),
-                text: rate.pharmacyName,
+                text: 'rate.pharmacyName',
                 style: AppTextStyles.bold14,
               ),
               AppText(
