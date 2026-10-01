@@ -158,6 +158,8 @@
   "searchHint": "ٍSearch",
   "rateFilterVerified":"Verified",
   "rateFilterPending":"Pending",
-  "rateFilterSuspended":"Suspended"
-
+  "rateFilterSuspended":"Suspended",
+  "pharmacyDetailsDocumentsUploaded": "Documents Uploaded",
+  "pharmacyDetailsTaxCard": "Tax Card",
+  "pharmacyDetailsViewButton": "View"
 }

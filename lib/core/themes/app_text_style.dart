@@ -106,4 +106,6 @@ class AppTextStyles {
       _style(24, FontWeight.bold, color: AppColors.textWhite);
   static TextStyle get bold28White =>
       _style(28, FontWeight.bold, color: AppColors.textWhite);
+  static TextStyle get bold14Black =>
+      _style(28, FontWeight.bold, color: AppColors.blackColor);
 }

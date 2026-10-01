@@ -128,6 +128,12 @@ class TestKeys {
   static const String pharmacyDetailsPhoneNumber = 'pharmacyDetailsPhoneNumber';
   static const String pharmacyDetailsPhoneNumberValue =
       'pharmacyDetailsPhoneNumberValue';
+  static const String pharmacyDetailsDocumentCard =
+      'pharmacyDetailsDocumentCard';
+  static const String pharmacyDetailsDocumentName =
+      'pharmacyDetailsDocumentName';
+  static const String pharmacyDetailsDocumentViewButton =
+      'pharmacyDetailsDocumentViewButton';
 
   // static const String pharmacyDetailsEmail = 'pharmacyDetailsEmail';
   // static const String pharmacyDetailsWebsite = 'pharmacyDetailsWebsite';

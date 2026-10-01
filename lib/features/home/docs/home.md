@@ -53,6 +53,8 @@ Presentation, one folder per tab:
 
 Pharmacy details: `presentation/pharmacy_management_tab/pharmacy_details/cubit/pharmacy_details_states.dart` is a `@freezed` class with `selectedTab` (`PharmacyDetailsTab`, default `pharmacy`). The generated file must be declared with `part 'pharmacy_details_states.freezed.dart';` or `build_runner` skips it. `PharmacyDetailsCubit.changeTab` emits `copyWith(selectedTab: tab)`.
 
+Pharmacy details "Documents Uploaded" section: each document is a `PharmacyDocumentWidget` (`pharmacy_details/widgets/pharmacy_document_widget.dart`) — file icon + `name` + fixed-width `AppButtonWidget` "View" (`onViewPressed`). Sizes live in `PharmacyDocumentDimens`; the button gets an explicit width and must not be wrapped in `Expanded` (only the name is `Expanded`). Currently shows a static "Tax Card" (`l10n.pharmacyDetailsTaxCard`) with a no-op tap until the details API is wired. The bottom bar wraps each `RateDetailsBottomNavigatorsWidget` in `Expanded`, because that widget uses `width: double.infinity`, which throws inside a bare `Row`.
+
 ## Dependency injection
 `HomeRemoteDataSourceImpl`, `HomeRepositoryImpl`, `GetHomeSummaryUseCase`, `HomeTabCubit`, `RateRemoteDataSourceImpl`, `RateRepositoryImpl`, `GetRatesUseCase`, and `RateCubit` are all registered via Injectable annotations (`@LazySingleton(as: Interface)` / `@injectable`) — nothing in this module is manually registered in `core/di/di.dart`. Wiring is generated into `di.config.dart` by `build_runner` (gitignored — regenerate locally with `dart run build_runner build --delete-conflicting-outputs`).
 

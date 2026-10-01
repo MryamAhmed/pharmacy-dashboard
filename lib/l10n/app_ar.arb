@@ -87,5 +87,8 @@
   "searchHint": "أبحث",
   "rateFilterVerified":"مُتحقَّق منه",
   "rateFilterPending":"قيد الانتظار",
-  "rateFilterSuspended":"معلق"
+  "rateFilterSuspended":"معلق",
+  "pharmacyDetailsDocumentsUploaded": "المستندات المرفوعة",
+  "pharmacyDetailsTaxCard": "البطاقة الضريبية",
+  "pharmacyDetailsViewButton": "عرض"
 }
