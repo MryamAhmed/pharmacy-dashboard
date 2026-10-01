@@ -63,7 +63,10 @@ class RateDetailsScreen extends StatelessWidget {
               ],
             ),
           ),
-          bottomNavigationBar: const RateDetailsBottomNavigatorsWidget(),
+          bottomNavigationBar: const RateDetailsBottomNavigatorsWidget(
+            backgroundColor: AppColors.rateRejectBackgroundColor,
+            rejectedColor: true,
+          ),
         );
       },
     );

@@ -49,7 +49,9 @@ Presentation, one folder per tab:
 - `presentation/pharmacy_management/screens/pharmacy_management_screen.dart`, `presentation/user_management/screens/user_management_screen.dart` — pure UI stubs rendering the shared `AppComingSoonView` widget with a tab-specific icon and `context.l10n.<tab>Title` / `context.l10n.comingSoon`. No cubits yet — add one per tab as each becomes real.
 
 ## State management
-`Cubit` + **Freezed** state throughout (`HomeTabState`, `RateState`; `PharmacyManagementScreen`/`UserManagementScreen` have no state yet since they're static placeholders).
+`Cubit` + **Freezed** state throughout (`HomeTabState`, `RateState`, `PharmacyDetailsState`).
+
+Pharmacy details: `presentation/pharmacy_management_tab/pharmacy_details/cubit/pharmacy_details_states.dart` is a `@freezed` class with `selectedTab` (`PharmacyDetailsTab`, default `pharmacy`). The generated file must be declared with `part 'pharmacy_details_states.freezed.dart';` or `build_runner` skips it. `PharmacyDetailsCubit.changeTab` emits `copyWith(selectedTab: tab)`.
 
 ## Dependency injection
 `HomeRemoteDataSourceImpl`, `HomeRepositoryImpl`, `GetHomeSummaryUseCase`, `HomeTabCubit`, `RateRemoteDataSourceImpl`, `RateRepositoryImpl`, `GetRatesUseCase`, and `RateCubit` are all registered via Injectable annotations (`@LazySingleton(as: Interface)` / `@injectable`) — nothing in this module is manually registered in `core/di/di.dart`. Wiring is generated into `di.config.dart` by `build_runner` (gitignored — regenerate locally with `dart run build_runner build --delete-conflicting-outputs`).

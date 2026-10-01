@@ -44,6 +44,7 @@ class AppColors {
   static const Color textGray = Color(0xFF627084);
   static const Color textWhite = Colors.white;
   static const Color hintTextGray = Color(0xFF9CA3AF);
+  static const Color textLightGray = Color(0xffECECF0);
 
   // ---------- Feedback ----------
   static const Color successGreenColor = Color(0xFF25B15F);

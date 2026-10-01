@@ -1,0 +1,1 @@
+enum PharmacyDetailsTab { owner, pharmacy }

@@ -117,5 +117,22 @@ class TestKeys {
   static const String pharmacyOwner = 'pharmacyOwner';
   static const String pharmacyTime = 'pharmacyTime';
   static const String searchBarWidget = 'searchBarWidget';
-  static const String pharmacyFilterTab ='pharmacyFilterTab';
+  static const String pharmacyFilterTab = 'pharmacyFilterTab';
+  //pharmacy details
+  static const String pharmacyDetailsPage = 'pharmacyDetailsPage';
+  static const String pharmacyDetailsName = 'pharmacyDetailsName';
+  static const String pharmacyDetailsAddress = 'pharmacyDetailsAddress';
+  static const String pharmacyDetailsOwnerTab = 'pharmacyDetailsOwnerTab';
+  static const String pharmacyDetailsTab = 'pharmacyDetailsTab';
+
+  static const String pharmacyDetailsPhoneNumber = 'pharmacyDetailsPhoneNumber';
+  static const String pharmacyDetailsPhoneNumberValue =
+      'pharmacyDetailsPhoneNumberValue';
+
+  // static const String pharmacyDetailsEmail = 'pharmacyDetailsEmail';
+  // static const String pharmacyDetailsWebsite = 'pharmacyDetailsWebsite';
+  // static const String pharmacyDetailsLogo = 'pharmacyDetailsLogo';
+  // static const String pharmacyDetailsTaxCard = 'pharmacyDetailsTaxCard';
+  // static const String pharmacyDetailsStatus = 'pharmacyDetailsStatus';
+  // static const String pharmacyDetailsButtonLabel = 'pharmacyDetailsButtonLabel';
 }

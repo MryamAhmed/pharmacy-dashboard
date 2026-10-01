@@ -10,17 +10,22 @@ import '../../../../../../../../core/themes/app_text_style.dart';
 import '../../../../../../../../shared/presentation/widgets/app_button_widget.dart';
 
 class RateDetailsBottomNavigatorsWidget extends StatelessWidget {
-  const RateDetailsBottomNavigatorsWidget({super.key});
-
+  const RateDetailsBottomNavigatorsWidget({
+    super.key,
+    required this.backgroundColor,
+    required this.rejectedColor,
+  });
+  final backgroundColor;
+  final bool rejectedColor;
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       color: AppColors.textWhite,
       padding: const EdgeInsets.fromLTRB(
-        AppPaddings.p24,
+        AppPaddings.p4,
         AppPaddings.p14,
-        AppPaddings.p24,
+        AppPaddings.p4,
         AppPaddings.p24,
       ),
       child: Expanded(
@@ -32,9 +37,11 @@ class RateDetailsBottomNavigatorsWidget extends StatelessWidget {
           onPressed: () {
             context.pop();
           },
-          backgroundColor: AppColors.rateRejectBackgroundColor,
+          backgroundColor: backgroundColor,
 
-          style: AppTextStyles.bold12RateRejectTextColor,
+          style: rejectedColor
+              ? AppTextStyles.bold12RateRejectTextColor
+              : AppTextStyles.bold12White,
         ),
       ),
     );
