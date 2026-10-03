@@ -26,7 +26,7 @@ class InformationWidget extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.only(
-          bottom: AppPaddings.p24,
+          bottom: AppPaddings.p32,
           left: AppPaddings.p8,
         ),
         child: Row(

@@ -90,5 +90,15 @@
   "rateFilterSuspended":"معلق",
   "pharmacyDetailsDocumentsUploaded": "المستندات المرفوعة",
   "pharmacyDetailsTaxCard": "البطاقة الضريبية",
-  "pharmacyDetailsViewButton": "عرض"
+  "pharmacyDetailsViewButton": "عرض",
+  "pharmacyDetailsPharmacyTab": "الصيدلية",
+  "pharmacyDetailsOwnerTab": "المالك",
+  "pharmacyDetailsPhone": "الهاتف",
+  "pharmacyDetailsLicenseExpiry": "انتهاء الترخيص",
+  "pharmacyDetailsLicenseNo": "رقم الترخيص",
+  "pharmacyDetailsIndustry": "المجال",
+  "pharmacyDetailsOwnerName": "اسم المالك",
+  "pharmacyDetailsWebsite": "الموقع الإلكتروني",
+  "pharmacyDetailsEmail": "البريد الإلكتروني",
+  "pharmacyDetailsNationalId": "الرقم القومي"
 }

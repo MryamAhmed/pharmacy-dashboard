@@ -161,5 +161,15 @@
   "rateFilterSuspended":"Suspended",
   "pharmacyDetailsDocumentsUploaded": "Documents Uploaded",
   "pharmacyDetailsTaxCard": "Tax Card",
-  "pharmacyDetailsViewButton": "View"
+  "pharmacyDetailsViewButton": "View",
+  "pharmacyDetailsPharmacyTab": "Pharmacy",
+  "pharmacyDetailsOwnerTab": "Owner",
+  "pharmacyDetailsPhone": "Phone",
+  "pharmacyDetailsLicenseExpiry": "License Expiry",
+  "pharmacyDetailsLicenseNo": "License No.",
+  "pharmacyDetailsIndustry": "Industry",
+  "pharmacyDetailsOwnerName": "Owner Name",
+  "pharmacyDetailsWebsite": "Website",
+  "pharmacyDetailsEmail": "Email",
+  "pharmacyDetailsNationalId": "National ID"
 }

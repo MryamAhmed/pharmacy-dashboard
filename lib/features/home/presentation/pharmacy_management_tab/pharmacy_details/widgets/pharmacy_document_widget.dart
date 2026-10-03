@@ -28,58 +28,47 @@ class PharmacyDocumentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppText(
-          key: const ValueKey('${TestKeys.pharmacyDetailsPhoneNumberValue}'),
-          text: context.l10n.pharmacyDetailsDocumentsUploaded,
-          style: AppTextStyles.bold18,
-        ),
-        const Gap(AppSpace.s12),
-        Container(
-          key: const Key(TestKeys.pharmacyDetailsDocumentCard),
-          height: 56.h,
-          padding: const EdgeInsets.symmetric(horizontal: AppPaddings.p16),
-          decoration: BoxDecoration(
-            color: AppColors.textAvatarBackgroundColor,
-            borderRadius: BorderRadius.circular(14.r),
+    return Container(
+      key: const Key(TestKeys.pharmacyDetailsDocumentCard),
+      height: 56.h,
+      padding: const EdgeInsets.symmetric(horizontal: AppPaddings.p16),
+      decoration: BoxDecoration(
+        color: AppColors.textAvatarBackgroundColor,
+        borderRadius: BorderRadius.circular(14.r),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            Icons.insert_drive_file,
+            size: 22.spMin,
+            color: AppColors.hintTextGray,
           ),
-          child: Row(
-            children: [
-              Icon(
-                Icons.insert_drive_file,
-                size: 22.spMin,
-                color: AppColors.hintTextGray,
+          const Gap(AppSpace.s8),
+          // Expanded lets long names shrink/ellipsize instead of pushing
+          // the "View" button off the card.
+          Expanded(
+            child: AppText(
+              key: const Key(TestKeys.pharmacyDetailsDocumentName),
+              text: name,
+              style: AppTextStyles.regular16.copyWith(
+                color: AppColors.textDarkGray,
               ),
-              const Gap(AppSpace.s8),
-              // Expanded lets long names shrink/ellipsize instead of pushing
-              // the "View" button off the card.
-              Expanded(
-                child: AppText(
-                  key: const Key(TestKeys.pharmacyDetailsDocumentName),
-                  text: name,
-                  style: AppTextStyles.regular16.copyWith(
-                    color: AppColors.textDarkGray,
-                  ),
-                  maxLines: 1,
-                ),
-              ),
-              // AppButtonWidget defaults to full width, so it gets an explicit
-              // width here; it must NOT be wrapped in Expanded.
-              AppButtonWidget(
-                key: const Key(TestKeys.pharmacyDetailsDocumentViewButton),
-                text: context.l10n.pharmacyDetailsViewButton,
-                onPressed: onViewPressed,
-                width: 72.w,
-                height: 36.h,
-                radius: 10,
-                style: AppTextStyles.bold16White,
-              ),
-            ],
+              maxLines: 1,
+            ),
           ),
-        ),
-      ],
+          // AppButtonWidget defaults to full width, so it gets an explicit
+          // width here; it must NOT be wrapped in Expanded.
+          AppButtonWidget(
+            key: const Key(TestKeys.pharmacyDetailsDocumentViewButton),
+            text: context.l10n.pharmacyDetailsViewButton,
+            onPressed: onViewPressed,
+            width: 72.w,
+            height: 36.h,
+            radius: 10,
+            style: AppTextStyles.bold16White,
+          ),
+        ],
+      ),
     );
   }
 }
