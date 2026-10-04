@@ -40,7 +40,9 @@ class PharmacyCubit extends Cubit<PharmacyState> {
   void selectFilter(PharmacyFilter filter) =>
       emit(state.copyWith(selectedFilter: filter));
 
+  /// Opens the pharmacy details screen for a tapped pharmacy card; the
+  /// route creates a fresh [PharmacyDetailsCubit] from [pharmacy].
   void openPharmacyDetails(PharmacyEntity pharmacy) {
-    _goRouter.pushNamed(AppRouteNames.rateDetails, extra: pharmacy);
+    _goRouter.pushNamed(AppRouteNames.pharmacyDetails, extra: pharmacy);
   }
 }

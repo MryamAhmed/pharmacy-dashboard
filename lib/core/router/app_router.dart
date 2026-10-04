@@ -13,6 +13,8 @@ import '../../features/home/domain/entities/pharmacy_entity.dart';
 import '../../features/home/presentation/home_shell/screens/home_shell_screen.dart';
 import '../../features/home/domain/entities/rate_entity.dart';
 import '../../features/home/presentation/home_tab/cubit/home_tab_cubit.dart';
+import '../../features/home/presentation/pharmacy_management_tab/pharmacy_details/cubit/pharmacy_datails_cubit.dart';
+import '../../features/home/presentation/pharmacy_management_tab/pharmacy_details/screens/pharmacy_details_screen.dart';
 import '../../features/home/presentation/pharmacy_management_tab/pharmcy/cubit/pharmacy_cubit.dart';
 import '../../features/home/presentation/rate_modules_tab/rate/cubit/rate_cubit.dart';
 import '../../features/home/presentation/rate_modules_tab/rate_details/presentation/rate_details/cubit/rate_details_cubit.dart';
@@ -82,16 +84,20 @@ final GoRouter appRouter = GoRouter(
         ),
       ),
     ),
-
-        GoRoute(
+    // Opened from PharmacyCubit.openPharmacyDetails with the tapped
+    // PharmacyEntity as `extra`; the cubit lives only as long as this page.
+    GoRoute(
       path: AppRoutes.pharmacyDetails,
       name: AppRouteNames.pharmacyDetails,
       pageBuilder: (context, state) => appPage(
         key: state.pageKey,
         child: BlocProvider(
-          create: (_) =>
-              getIt.get<PharmacyCubit>(param1: state.extra! as PharmacyEntity),
-          child: const RateDetailsScreen(key: Key(TestKeys.rateDetailsPage)),
+          create: (_) => getIt.get<PharmacyDetailsCubit>(
+            param1: state.extra! as PharmacyEntity,
+          ),
+          child: const PharmacyDetailsScreen(
+            key: Key(TestKeys.pharmacyDetailsPage),
+          ),
         ),
       ),
     ),
