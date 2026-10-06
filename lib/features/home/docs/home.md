@@ -67,6 +67,8 @@ Registered at `AppRoutes.home` (`/home`) as `HomeShellScreen`, wrapped in a `Mul
 
 Tapping a `RateCardWidget` leaves this module entirely: `RateCubit.openRateDetails(rate)` calls `GoRouter.pushNamed(AppRouteNames.rateDetails, extra: rate)`, a separate top-level route (`/rate-details`) that renders `RateDetailsScreen` from the standalone `rate_details` feature module — see `lib/features/rate_details/docs/rate_details.md`.
 
+`RateCardWidget` renders the reviewer avatar with `AppCachedImage`, not `Image.network`: the reviews API often returns `profilePicture: null`, and `AppCachedImage` shows a placeholder for a null/empty URL instead of trying to load `''`. (Found by the widget test in `test/features/home/presentation/rate_modules_tab/rate/widgets/rate_card_widget_test.dart`.)
+
 ## Localization
 All Home strings live in `app_en.arb`/`app_ar.arb`: `homeTitle`, `pharmacyManagementTitle`, `rateTitle`, `userManagementTitle`, `navHome`, `navPharmacy`, `navRate`, `navUsers`, `comingSoon`, `searchHint`, plus the home-tab dashboard keys added for the tab widgets — `homeGreeting` (`{name}` placeholder), `recentActivityTitle`, `quickActionsTitle`, `quickActionApproveRating`, `quickActionVerifyUsers`, `quickActionVerifyPharmacies`, `homeDashboardUsersSubtitle`, `homeDashboardActiveJobsSubtitle`, `homeDashboardPharmaciesSubtitle`, `homeDashboardApplicationsSubtitle`. Per-widget, only some of these are localized today — see the widget notes above for which strings are copy (localized) vs. dummy data (hardcoded, intentionally not translated). `AppConstants.homePlaceholderUserName` (`'Aya'`) is the stand-in signed-in-user name for `homeGreeting`, same pattern as `AppConstants.loginPlaceholderUserName` on the login screen.
 
