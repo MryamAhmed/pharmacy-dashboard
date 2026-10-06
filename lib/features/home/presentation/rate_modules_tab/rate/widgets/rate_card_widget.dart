@@ -11,6 +11,7 @@ import '../../../../../../core/extensions/build_context_localizations.dart';
 import '../../../../../../core/themes/app_colors.dart';
 import '../../../../../../core/themes/app_text_style.dart';
 import '../../../../../../core/utils/date_converter.dart';
+import '../../../../../../shared/presentation/widgets/app_cached_image.dart';
 import '../../../../../../shared/presentation/widgets/app_text.dart';
 import '../../../../domain/entities/rate_entity.dart';
 import '../cubit/rate_cubit.dart';
@@ -47,11 +48,13 @@ class RateCardWidget extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Image.network(
-                        rate.profilePicture ?? '',
+                      // AppCachedImage shows a placeholder when the URL is
+                      // null/empty (the API often sends null), instead of
+                      // Image.network('') which throws a load error.
+                      AppCachedImage(
+                        imageUrl: rate.profilePicture,
                         width: 40.spMin,
                         height: 40.spMin,
-                        fit: BoxFit.cover,
                       ),
                       const Gap(AppSpace.s12),
                       Column(
