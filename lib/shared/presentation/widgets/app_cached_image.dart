@@ -15,6 +15,10 @@ import 'app_loading_widget.dart';
 ///
 /// Shows [AppLoadingWidget] while loading and [AppImagePlaceholder] when
 /// [imageUrl] is null/empty or the image fails to load.
+///
+/// Also accepts inline `data:image/...;base64,...` URIs (some API endpoints
+/// embed the image instead of linking to it); those are decoded locally
+/// because [CachedNetworkImage] can only fetch `http(s)` URLs.
 class AppCachedImage extends StatelessWidget {
   const AppCachedImage({
     super.key,
@@ -37,6 +41,17 @@ class AppCachedImage extends StatelessWidget {
 
     final Widget image = (url == null || url.isEmpty)
         ? AppImagePlaceholder(width: width, height: height)
+        // Inline image: decode the base64 payload instead of fetching it.
+        : url.startsWith('data:')
+        ? Image.memory(
+            UriData.parse(url).contentAsBytes(),
+            width: width,
+            height: height,
+            fit: fit,
+            gaplessPlayback: true,
+            errorBuilder: (context, _, __) =>
+                AppImagePlaceholder(width: width, height: height),
+          )
         : CachedNetworkImage(
             imageUrl: url,
             width: width,

@@ -32,7 +32,10 @@ class DataRateModel {
     profilePicture = json[ApiParamConstants.profilePicture];
     reviewerName = json[ApiParamConstants.reviewerName];
     reviewerPosition = json[ApiParamConstants.reviewerPosition];
-    rate = json[ApiParamConstants.rate];
+    // The API sends `rate` as a decimal (e.g. 4.0). Assigning that straight
+    // to `int?` throws, which made callApiList drop the whole list. Read it
+    // as any number and round to whole stars.
+    rate = (json[ApiParamConstants.rate] as num?)?.round();
     reviewerId = json[ApiParamConstants.reviewerId];
     revieweeId = json[ApiParamConstants.revieweeId];
     revieweeName = json[ApiParamConstants.revieweeName];
