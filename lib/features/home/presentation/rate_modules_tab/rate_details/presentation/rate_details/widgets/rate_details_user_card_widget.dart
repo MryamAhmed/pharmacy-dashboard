@@ -40,7 +40,9 @@ class RateDetailsUserCardWidget extends StatelessWidget {
               TextAvatarWidget(
                 size: 44.spMin,
                 style: AppTextStyles.bold16PrimaryColor,
-                title: rate.userName.initials,
+                // The user is the one being rated (the reviewee) — see the
+                // "Rating for" label above.
+                title: (rate.revieweeName ?? '').initials,
               ),
               const Gap(AppSpace.s12),
               Column(
@@ -48,7 +50,7 @@ class RateDetailsUserCardWidget extends StatelessWidget {
                 children: [
                   AppText(
                     key: const Key(TestKeys.rateDetailsUserName),
-                    text: rate.userName,
+                    text: rate.revieweeName ?? '',
                     style: AppTextStyles.bold14,
                   ),
                   AppText(

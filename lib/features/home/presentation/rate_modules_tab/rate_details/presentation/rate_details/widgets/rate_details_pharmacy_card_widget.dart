@@ -28,9 +28,10 @@ class RateDetailsPharmacyCardWidget extends StatelessWidget {
           TextAvatarWidget(
             size: 44.spMin,
             style: AppTextStyles.bold16PrimaryColor,
-            title: rate.pharmacyName.isEmpty
+            // The pharmacy is the one who gave the rating (the reviewer).
+            title: (rate.reviewerName ?? '').isEmpty
                 ? ''
-                : rate.pharmacyName[0].toUpperCase(),
+                : rate.reviewerName![0].toUpperCase(),
           ),
           const Gap(AppSpace.s12),
           Column(
@@ -38,7 +39,7 @@ class RateDetailsPharmacyCardWidget extends StatelessWidget {
             children: [
               AppText(
                 key: const Key(TestKeys.rateDetailsPharmacyName),
-                text: rate.pharmacyName,
+                text: rate.reviewerName ?? '',
                 style: AppTextStyles.bold14,
               ),
               AppText(

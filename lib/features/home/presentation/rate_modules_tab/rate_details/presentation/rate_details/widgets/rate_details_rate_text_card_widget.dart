@@ -35,7 +35,7 @@ class RateDetailsRateTextCardWidget extends StatelessWidget {
           padding: const EdgeInsets.all(AppPaddings.p12),
           child: AppText(
             key: const Key(TestKeys.rateDetailsDescription),
-            text: rate.reviewText,
+            text: rate.comment ?? '',
             style: AppTextStyles.regular12,
           ),
         ),

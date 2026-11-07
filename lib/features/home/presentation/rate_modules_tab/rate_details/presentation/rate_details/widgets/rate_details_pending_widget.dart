@@ -29,7 +29,9 @@ class RateDetailsPendingWidget extends StatelessWidget {
       child: AppText(
         key: const Key(TestKeys.rateDetailsDate),
         text: context.l10n.rateDetailsPendingApproval(
-          rate.dateTime.relativeTime(context),
+          // createdAt is an ISO string from the API; show nothing if it's
+          // missing or unparseable.
+          DateTime.tryParse(rate.createdAt ?? '')?.relativeTime(context) ?? '',
         ),
         style: AppTextStyles.regular12DashboardItem3Color,
       ),
