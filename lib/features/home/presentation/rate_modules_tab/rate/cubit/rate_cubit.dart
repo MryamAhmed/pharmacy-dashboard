@@ -35,6 +35,19 @@ class RateCubit extends Cubit<RateState> {
       emit(state.copyWith(selectedFilter: filter));
 
   /// Opens the rate-details screen for a tapped review card.
-  void openRateDetails(RateEntity rate) =>
-      _goRouter.pushNamed(AppRouteNames.rateDetails, extra: rate);
+  ///
+  /// The details screen pops with `true` after a successful delete — in that
+  /// case the review is removed from the list locally (no refetch needed).
+  Future<void> openRateDetails(RateEntity rate) async {
+    final deleted = await _goRouter.pushNamed<bool>(
+      AppRouteNames.rateDetails,
+      extra: rate,
+    );
+    if (isClosed || deleted != true) return;
+    emit(
+      state.copyWith(
+        rates: state.rates.where((r) => r.id != rate.id).toList(),
+      ),
+    );
+  }
 }

@@ -14,24 +14,39 @@ import 'package:pharmacy_app/features/home/presentation/rate_modules_tab/rate_de
 // Project imports:
 import '../../../../../../../../core/constants/app_values.dart';
 import '../../../../../../../../core/constants/test_keys.dart';
+import '../../../../../../../../core/extensions/app_error_localization.dart';
 import '../../../../../../../../core/extensions/build_context_localizations.dart';
 import '../../../../../../../../core/themes/app_colors.dart';
 import '../../../../../../../../core/themes/app_text_style.dart';
 import '../../../../../../../../shared/presentation/widgets/app_scaffold.dart';
+import '../../../../../../../../shared/presentation/widgets/app_text.dart';
 import '../cubit/rate_details_cubit.dart';
 import '../cubit/rate_details_state.dart';
 import '../widgets/rate_details_bottom_navigators_widget.dart';
 import '../widgets/rate_details_pharmacy_card_widget.dart';
 
 /// Full details of a single review, opened by tapping a card in the Rate
-/// tab's list ([RateCubit.openRateDetails]). Read-only for now — no
-/// approve/reject action lives here yet.
+/// tab's list ([RateCubit.openRateDetails]). The bottom bar's Delete button
+/// removes the review; delete failures are shown in a SnackBar.
 class RateDetailsScreen extends StatelessWidget {
   const RateDetailsScreen({required Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RateDetailsCubit, RateDetailsState>(
+    return BlocConsumer<RateDetailsCubit, RateDetailsState>(
+      // Show a SnackBar each time the delete request fails.
+      listenWhen: (previous, current) =>
+          previous.error != current.error && current.error != null,
+      listener: (context, state) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: AppText(
+              text: state.error!.localized(context),
+              style: AppTextStyles.medium14White,
+            ),
+          ),
+        );
+      },
       builder: (context, state) {
         final rate = state.rate;
         return AppScaffold(
