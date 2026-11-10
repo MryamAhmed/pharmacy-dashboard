@@ -71,7 +71,7 @@ class RateDetailsScreen extends StatelessWidget {
                 const Gap(AppSpace.s12),
                 RateDetailsRateTextCardWidget(rate: rate),
                 const Gap(AppSpace.s12),
-                const RateDetailsContextCardWidget(),
+                RateDetailsContextCardWidget(rate: rate),
 
                 const Gap(AppSpace.s12),
                 const RateDetailsPreviousRateWidget(),

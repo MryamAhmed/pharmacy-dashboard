@@ -23,6 +23,8 @@ class ApiParamConstants {
   static const String revieweeId = 'revieweeId';
   static const String revieweeName = 'revieweeName';
   static const String createdAt = 'createdAt';
+  static const String exp = 'exp';
+  static const String revieweeAddress = 'revieweeAddress';
 
   // ---------- Pharmacy (GET Dashboard/pharmacies) ----------
   static const String website = 'website';

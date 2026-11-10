@@ -1,6 +1,9 @@
 import '../../../../core/constants/api_param_constatnts.dart';
 import '../../domain/entities/rate_entity.dart';
 
+/// One item of `GET Dashboard/reviews` → `data[]`. This is the only review
+/// endpoint with data — there is no review-details GET (`Dashboard/review/{id}`
+/// accepts DELETE only), so the details screen shows this same object.
 class DataRateModel {
   String? id;
   String? comment;
@@ -11,6 +14,8 @@ class DataRateModel {
   String? reviewerId;
   String? revieweeId;
   String? revieweeName;
+  String? revieweeAddress;
+  String? exp;
   String? createdAt;
 
   DataRateModel({
@@ -23,6 +28,8 @@ class DataRateModel {
     this.reviewerId,
     this.revieweeId,
     this.revieweeName,
+    this.revieweeAddress,
+    this.exp,
     this.createdAt,
   });
 
@@ -39,25 +46,29 @@ class DataRateModel {
     reviewerId = json[ApiParamConstants.reviewerId];
     revieweeId = json[ApiParamConstants.revieweeId];
     revieweeName = json[ApiParamConstants.revieweeName];
+    // `?.toString()`: the sample only shows "" / "test", so the real type is
+    // not guaranteed — a number would otherwise throw and drop the list.
+    revieweeAddress = json[ApiParamConstants.revieweeAddress]?.toString();
+    exp = json[ApiParamConstants.exp]?.toString();
     createdAt = json[ApiParamConstants.createdAt];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data[ApiParamConstants.id] = this.id;
-    data[ApiParamConstants.comment] = this.comment;
-    data[ApiParamConstants.profilePicture] = this.profilePicture;
-    data[ApiParamConstants.reviewerName] = this.reviewerName;
-    data[ApiParamConstants.reviewerPosition] = this.reviewerPosition;
-    data[ApiParamConstants.rate] = this.rate;
-    data[ApiParamConstants.reviewerId] = this.reviewerId;
-    data[ApiParamConstants.revieweeId] = this.revieweeId;
-    data[ApiParamConstants.revieweeName] = this.revieweeName;
-    data[ApiParamConstants.createdAt] = this.createdAt;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    ApiParamConstants.id: id,
+    ApiParamConstants.comment: comment,
+    ApiParamConstants.profilePicture: profilePicture,
+    ApiParamConstants.reviewerName: reviewerName,
+    ApiParamConstants.reviewerPosition: reviewerPosition,
+    ApiParamConstants.rate: rate,
+    ApiParamConstants.reviewerId: reviewerId,
+    ApiParamConstants.revieweeId: revieweeId,
+    ApiParamConstants.revieweeName: revieweeName,
+    ApiParamConstants.revieweeAddress: revieweeAddress,
+    ApiParamConstants.exp: exp,
+    ApiParamConstants.createdAt: createdAt,
+  };
 
-  //to entity
+  /// Maps to the domain entity used by the Rate list and the details screen.
   RateEntity toDomain() {
     return RateEntity(
       id: id,
@@ -69,6 +80,8 @@ class DataRateModel {
       reviewerId: reviewerId,
       revieweeId: revieweeId,
       revieweeName: revieweeName,
+      revieweeAddress: revieweeAddress,
+      exp: exp,
       createdAt: createdAt,
     );
   }

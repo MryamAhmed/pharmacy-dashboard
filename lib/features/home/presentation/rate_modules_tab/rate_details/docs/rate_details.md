@@ -19,6 +19,18 @@ This module is presentation-only, nested under `lib/features/home/presentation/r
 - `screens/rate_details_screen.dart` — `BlocConsumer`; the listener shows a `SnackBar` (`AppText` + `AppErrorX.localized`) whenever a new `error` arrives.
 - `widgets/rate_details_bottom_navigators_widget.dart` — `BlocBuilder` (`buildWhen: isDeleting` changed) around `AppButtonWidget`; `isLoading: state.isDeleting`, `onPressed: cubit.deleteRate`.
 
+## Where the data comes from
+There is **no review-details API**: `GET Dashboard/review/{id}` returns 405 (that route is DELETE-only), and other guessed paths return 404. The screen shows the `RateEntity` from `GET Dashboard/reviews` that was tapped in the list, passed via `extra`. Every value comes from that response:
+
+| Widget | Field(s) |
+|---|---|
+| `RateDetailsPharmacyCardWidget` (who wrote it) | `profilePicture` (else first letter), `reviewerName` |
+| `RateDetailsUserCardWidget` ("Rating for") | `revieweeName` (+ `.initials`), subtitle `exp · revieweeAddress` (empty parts skipped) |
+| `RateGivenWidget` / `RateDetailsRateTextCardWidget` / `RateDetailsPendingWidget` | `rate` / `comment` / `createdAt` |
+| `RateDetailsContextCardWidget` | Position = `reviewerPosition`; Shift date = "-" (not in the API) |
+
+`exp` and `revieweeAddress` are read with `?.toString()`. If the backend adds a details endpoint, fetch it in `RateDetailsCubit` by `rate.id`.
+
 ## Data flow (delete)
 Tap Delete → `RateDetailsCubit.deleteRate()` → `DeleteRateUseCase` → `RateRepository` → `DELETE /Dashboard/review/{id}` → success: `pop(true)` → `RateCubit.openRateDetails` (which `await`s `pushNamed<bool>`) receives `true` and removes that id from `state.rates` locally (no refetch).
 

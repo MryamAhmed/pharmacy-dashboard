@@ -6,17 +6,27 @@ import 'package:pharmacy_app/features/home/domain/entities/rate_entity.dart';
 import '../../../../../../../../core/constants/app_values.dart';
 import '../../../../../../../../core/constants/test_keys.dart';
 import '../../../../../../../../core/extensions/build_context_localizations.dart';
+import '../../../../../../../../core/extensions/string_x.dart';
 import '../../../../../../../../core/themes/app_colors.dart';
 import '../../../../../../../../core/themes/app_text_style.dart';
 import '../../../../../../../../shared/presentation/widgets/app_text.dart';
 import '../../../../rate/widgets/text_avatar_widget.dart';
 
+/// "Rating for" card: the person being rated (the reviewee) — initials,
+/// name, and "exp · address" from `GET Dashboard/reviews`.
 class RateDetailsUserCardWidget extends StatelessWidget {
   final RateEntity rate;
   const RateDetailsUserCardWidget({super.key, required this.rate});
 
   @override
   Widget build(BuildContext context) {
+    final name = rate.revieweeName ?? '';
+    // Join only the parts the API actually filled (address is often "").
+    final subtitle = [
+      rate.exp,
+      rate.revieweeAddress,
+    ].where((part) => part != null && part.isNotEmpty).join(' · ');
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,7 +36,6 @@ class RateDetailsUserCardWidget extends StatelessWidget {
           style: AppTextStyles.medium12Hintstyle,
         ),
         const Gap(AppSpace.s4),
-
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -39,23 +48,26 @@ class RateDetailsUserCardWidget extends StatelessWidget {
               TextAvatarWidget(
                 size: 44.spMin,
                 style: AppTextStyles.bold16PrimaryColor,
-                title: 'rate.userName.initials',
+                title: name.initials,
               ),
               const Gap(AppSpace.s12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AppText(
-                    key: const Key(TestKeys.rateDetailsUserName),
-                    text: 'rate.userName',
-                    style: AppTextStyles.bold14,
-                  ),
-                  AppText(
-                    key: const Key(TestKeys.rateDetailsUserAddress),
-                    text: '3 Years Exp · Shoubra',
-                    style: AppTextStyles.regular12Hintstyle,
-                  ),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppText(
+                      key: const Key(TestKeys.rateDetailsUserName),
+                      text: name,
+                      style: AppTextStyles.bold14,
+                    ),
+                    if (subtitle.isNotEmpty)
+                      AppText(
+                        key: const Key(TestKeys.rateDetailsUserAddress),
+                        text: subtitle,
+                        style: AppTextStyles.regular12Hintstyle,
+                      ),
+                  ],
+                ),
               ),
             ],
           ),
