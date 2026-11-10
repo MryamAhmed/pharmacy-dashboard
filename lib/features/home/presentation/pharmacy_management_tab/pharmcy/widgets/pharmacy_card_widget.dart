@@ -7,6 +7,7 @@ import 'package:pharmacy_app/features/home/domain/entities/pharmacy_entity.dart'
 
 // Project imports:
 import '../../../../../../../core/constants/app_values.dart';
+import '../../../../../../core/extensions/build_context_localizations.dart';
 import '../../../../../../../core/themes/app_colors.dart';
 import '../../../../../../../core/themes/app_text_style.dart';
 import '../../../../../../../shared/presentation/widgets/app_button_widget.dart';
@@ -16,11 +17,17 @@ import '../../../rate_modules_tab/rate/widgets/text_avatar_widget.dart'
     show TextAvatarWidget;
 import '../cubit/pharmacy_cubit.dart';
 
+/// One pharmacy in the Pharmacy Management list. Tapping the card opens its
+/// details; the Verify button verifies it in place.
 class PharmacyCardWidget extends StatelessWidget {
   const PharmacyCardWidget({super.key, required this.pharmacy});
   final PharmacyEntity pharmacy;
   @override
   Widget build(BuildContext context) {
+    // Only this card rebuilds when its own verify request starts/ends.
+    final isVerifying = context.select(
+      (PharmacyCubit cubit) => cubit.state.verifyingId == pharmacy.id,
+    );
     return GestureDetector(
       key: const ValueKey(TestKeys.pharmacyCardItem),
       onTap: () => context.read<PharmacyCubit>().openPharmacyDetails(pharmacy),
@@ -57,13 +64,23 @@ class PharmacyCardWidget extends StatelessWidget {
                             ),
                             Expanded(
                               flex: 1,
+                              // Already verified → a disabled "Verified"
+                              // label; otherwise "Verify" calls the API.
                               child: AppButtonWidget(
                                 height: 28.h,
                                 width: 44.w,
                                 radius: 11.r,
-                                key: const ValueKey(TestKeys.pharmacyVerified),
-                                text: "Verified",
-                                onPressed: () {},
+                                key: ValueKey(
+                                  '${TestKeys.pharmacyVerified}_${pharmacy.id}',
+                                ),
+                                text: pharmacy.isVerified
+                                    ? context.l10n.pharmacyVerifiedLabel
+                                    : context.l10n.pharmacyVerifyButton,
+                                isEnabled: !pharmacy.isVerified,
+                                isLoading: isVerifying,
+                                onPressed: () => context
+                                    .read<PharmacyCubit>()
+                                    .verifyPharmacy(pharmacy),
                                 style: AppTextStyles.bold16PrimaryColor,
                                 backgroundColor: AppColors.disabledButtonColor,
                               ),

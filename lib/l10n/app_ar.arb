@@ -100,5 +100,9 @@
   "pharmacyDetailsOwnerName": "اسم المالك",
   "pharmacyDetailsWebsite": "الموقع الإلكتروني",
   "pharmacyDetailsEmail": "البريد الإلكتروني",
-  "pharmacyDetailsNationalId": "الرقم القومي"
+  "pharmacyDetailsNationalId": "الرقم القومي",
+  "pharmacyVerifyButton": "توثيق",
+  "pharmacyVerifiedLabel": "موثقة",
+  "pharmacyRejectButton": "رفض",
+  "pharmacyDetailsEmptyValue": "-"
 }

@@ -120,6 +120,10 @@ class TestKeys {
   static const String pharmacyFilterTab = 'pharmacyFilterTab';
   //pharmacy details
   static const String pharmacyDetailsPage = 'pharmacyDetailsPage';
+  static const String pharmacyDetailsVerifyButton =
+      'pharmacyDetailsVerifyButton';
+  static const String pharmacyDetailsRejectButton =
+      'pharmacyDetailsRejectButton';
   static const String pharmacyDetailsName = 'pharmacyDetailsName';
   static const String pharmacyDetailsAddress = 'pharmacyDetailsAddress';
   static const String pharmacyDetailsOwnerTab = 'pharmacyDetailsOwnerTab';

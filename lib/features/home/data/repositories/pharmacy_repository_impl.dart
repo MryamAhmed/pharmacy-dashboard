@@ -1,4 +1,4 @@
-import 'package:fpdart/src/either.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pharmacy_app/features/home/domain/entities/pharmacy_entity.dart';
 
@@ -22,5 +22,20 @@ class PharmacyRepositoryImpl implements PharmacyRepository {
       (failure) => Left(failure.toAppError()),
       (responses) => Right(responses.map((r) => r.toDomain()).toList()),
     );
+  }
+
+  // Success carries no data — only the failure side needs mapping.
+  @override
+  Future<Either<AppError, Unit>> verifyPharmacy(String pharmacyId) async {
+    final result = await _pharmasyRemoteDataSource.verifyPharmacy(pharmacyId);
+    return result.mapLeft((failure) => failure.toAppError());
+  }
+
+  @override
+  Future<Either<AppError, Unit>> unverifyPharmacy(String pharmacyId) async {
+    final result = await _pharmasyRemoteDataSource.unverifyPharmacy(
+      pharmacyId,
+    );
+    return result.mapLeft((failure) => failure.toAppError());
   }
 }

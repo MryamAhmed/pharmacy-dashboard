@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 // Project imports:
+import '../../../core/constants/app_endpoints.dart';
 import '../../../core/constants/request_constants.dart';
 import '../../../flavors.dart';
 
@@ -20,7 +21,16 @@ class DioClientService {
     );
     _dio = Dio(baseOptions);
     _dio.interceptors.addAll([
-      if (Flavor.enableNetworkLogger) PrettyDioLogger(requestBody: true),
+      if (Flavor.enableNetworkLogger)
+        PrettyDioLogger(
+          requestBody: true,
+          // The pharmacies response embeds full-size base64 logos (MBs of
+          // text) that flood the terminal and hide every later log. Skip
+          // printing that one response body; the request line still logs.
+          filter: (options, args) =>
+              !(args.isResponse &&
+                  options.path.endsWith(AppEndPoints.pharmacies)),
+        ),
       InterceptorsWrapper(
         onRequest: (options, handler) {
           options.headers[RequestConstants.contentType] =

@@ -1,3 +1,6 @@
+// Dart imports:
+import 'dart:typed_data';
+
 // Flutter imports:
 import 'package:flutter/material.dart';
 
@@ -35,19 +38,43 @@ class AppCachedImage extends StatelessWidget {
   final BoxFit fit;
   final BorderRadius? borderRadius;
 
+  /// Decoded bytes per data URI, so each rebuild reuses the SAME
+  /// [Uint8List]. `MemoryImage` compares bytes by identity — new bytes on
+  /// every build made Flutter re-decode the whole image each time (a
+  /// 1920×1920 pharmacy logo froze the screen on every tab tap).
+  static final Map<String, Uint8List> _dataUriBytes = {};
+
+  /// Upper bound for [_dataUriBytes] so it can't grow forever.
+  static const int _maxCachedDataUris = 50;
+
+  static Uint8List _bytesFor(String dataUri) {
+    final cached = _dataUriBytes[dataUri];
+    if (cached != null) return cached;
+    if (_dataUriBytes.length >= _maxCachedDataUris) {
+      // Drop the oldest entry (maps keep insertion order).
+      _dataUriBytes.remove(_dataUriBytes.keys.first);
+    }
+    return _dataUriBytes[dataUri] = UriData.parse(dataUri).contentAsBytes();
+  }
+
   @override
   Widget build(BuildContext context) {
     final url = imageUrl;
+    // Decode at the size actually shown instead of the source size — a
+    // 44px avatar doesn't need a 1920×1920 bitmap in memory.
+    final pixelRatio = MediaQuery.devicePixelRatioOf(context);
+    final cacheWidth = width == null ? null : (width! * pixelRatio).round();
 
     final Widget image = (url == null || url.isEmpty)
         ? AppImagePlaceholder(width: width, height: height)
         // Inline image: decode the base64 payload instead of fetching it.
         : url.startsWith('data:')
         ? Image.memory(
-            UriData.parse(url).contentAsBytes(),
+            _bytesFor(url),
             width: width,
             height: height,
             fit: fit,
+            cacheWidth: cacheWidth,
             gaplessPlayback: true,
             errorBuilder: (context, _, __) =>
                 AppImagePlaceholder(width: width, height: height),
@@ -57,6 +84,7 @@ class AppCachedImage extends StatelessWidget {
             width: width,
             height: height,
             fit: fit,
+            memCacheWidth: cacheWidth,
             placeholder: (context, _) => SizedBox(
               width: width,
               height: height,

@@ -171,5 +171,9 @@
   "pharmacyDetailsOwnerName": "Owner Name",
   "pharmacyDetailsWebsite": "Website",
   "pharmacyDetailsEmail": "Email",
-  "pharmacyDetailsNationalId": "National ID"
+  "pharmacyDetailsNationalId": "National ID",
+  "pharmacyVerifyButton": "Verify",
+  "pharmacyVerifiedLabel": "Verified",
+  "pharmacyRejectButton": "Reject",
+  "pharmacyDetailsEmptyValue": "-"
 }

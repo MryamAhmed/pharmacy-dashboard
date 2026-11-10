@@ -6,13 +6,16 @@ enum PharmacyFilter {
   Suspended;
 
   bool matches(String status) {
+    // Compare against the enum's `.name` — comparing a String to the enum
+    // value itself is always false, so Pending/Suspended matched nothing.
+    final normalized = status.toLowerCase();
     switch (this) {
       case PharmacyFilter.all:
         return true;
       case PharmacyFilter.Pending:
-        return status == PharmacyStatus.pending;
+        return normalized == PharmacyStatus.pending.name;
       case PharmacyFilter.Suspended:
-        return status == PharmacyStatus.suspended;
+        return normalized == PharmacyStatus.suspended.name;
     }
   }
 }

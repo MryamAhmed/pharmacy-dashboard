@@ -55,9 +55,29 @@ Pharmacy details: `presentation/pharmacy_management_tab/pharmacy_details/cubit/p
 
 Navigation to pharmacy details: tapping a `PharmacyCardWidget` calls `PharmacyCubit.openPharmacyDetails(pharmacy)` → `GoRouter.pushNamed(AppRouteNames.pharmacyDetails, extra: pharmacy)`. The top-level `/pharmacy-details` route creates the cubit there — `BlocProvider(create: (_) => getIt.get<PharmacyDetailsCubit>(param1: state.extra! as PharmacyEntity))` around `PharmacyDetailsScreen` — so a fresh cubit exists only while the details page is open and is closed on pop. It is **not** provided by the `home` route.
 
-Pharmacy/Owner tabs: `InformationTabWidget` is a `BlocBuilder` (rebuilds only on `selectedTab` change) rendering two `InformationTabItemWidget` pills (`TestKeys.pharmacyDetailsTab` / `pharmacyDetailsOwnerTab`); the selected pill is white on the grey `textLightGray` track and each tap calls `changeTab`. The screen's body is a second `BlocBuilder` that shows `PharmacyInformationSectionWidget` (phone, license expiry, license no., industry, website + documents) or `OwnerInformationSectionWidget` (owner name, phone, email, national ID). Labels come from `l10n.pharmacyDetails*`; values are static placeholders until a pharmacy-details API exists.
+Pharmacy/Owner tabs: `InformationTabWidget` is a `BlocBuilder` (rebuilds only on `selectedTab` change) rendering two `InformationTabItemWidget` pills (`TestKeys.pharmacyDetailsTab` / `pharmacyDetailsOwnerTab`); each tap calls `changeTab`. The screen body is a `BlocBuilder` that passes `state.pharmacy` to `PharmacyInfoTitle(pharmacy:)` and `PharmacyInformationSectionWidget(pharmacy:)`, or shows `OwnerInformationSectionWidget`.
 
-Pharmacy details "Documents Uploaded" section: each document is a `PharmacyDocumentWidget` (`pharmacy_details/widgets/pharmacy_document_widget.dart`) — the "Documents Uploaded" heading, then file icon + `name` + fixed-width `AppButtonWidget` "View" (`onViewPressed`). The button gets an explicit width and must not be wrapped in `Expanded` (only the name is `Expanded`). Currently shows a static "Tax Card" (`l10n.pharmacyDetailsTaxCard`) with a no-op tap until the details API is wired. The bottom bar wraps each `RateDetailsBottomNavigatorsWidget` in `Expanded`, because that widget uses `width: double.infinity`, which throws inside a bare `Row`.
+Pharmacy details data: everything shown is the tapped `PharmacyEntity` from `GET Dashboard/pharmacies` (passed via `extra`, no separate details API). Mapping:
+| UI | Source |
+|---|---|
+| Header avatar | `logo` via `AppCachedImage` (URL or base64), else first letter of `pharmacyName` (`TextAvatarWidget`) |
+| Header name / subtitle | `pharmacyName` / `pharmacyAddress` |
+| Phone / Website / Industry / Owner name | `pharmacyPhoneNumber` / `website` / `pharmacyIndustry` / `pharmacyOwnerName` |
+| License expiry, license no., owner email | not in the API → `l10n.pharmacyDetailsEmptyValue` ("-") |
+| Owner tab: name / phone / national ID | `pharmacyOwnerName` / `pharmacyOwnerPhoneNumber` / `ownerNationalId` |
+| Tax card document row (both tabs) | shown only when `taxCard` is non-empty; View is still a no-op |
+
+Null and `""` both render as "-". The status key is **`verificationStatus`** (e.g. `"Pending"`), and the model maps it to the entity's `status`. Before this fix the model read `status`, so status was always null and `isVerified` and the filters never matched. `ownerUniversity`, `ownerFaculty`, `ownerSpecification`, `ownerDateOfBirth` and `ownerGender` are parsed into the entity but not shown yet (the design has no rows for them). The model reads every value with `?.toString()` because several are null in the samples and their real types are unknown. JSON keys live in `ApiParamConstants`.
+
+Verify / Reject (pharmacy details): `PharmacyDetailsActionsWidget` (bottom bar) replaced the reused `RateDetailsBottomNavigatorsWidget`, which depends on `RateDetailsCubit`. Verify → `PharmacyDetailsCubit.verify()` → `VerifyPharmacyUseCase` → `PUT Dashboard/verify?pharmacyId=`; Reject → `reject()` → `UnverifyPharmacyUseCase` → `PUT Dashboard/unverify?pharmacyId=`. The state has `isVerifying`, `isRejecting` (`isBusy` getter disables both buttons) and `error`, which `BlocListener` shows in a SnackBar. On success the cubit calls `pop(true)` and `PharmacyCubit.openPharmacyDetails` (awaiting `pushNamed<bool>`) refetches the list. Verify shows a disabled "Verified" label when `PharmacyEntity.isVerified` (`status` lowercased == `PharmacyStatus.verified.name`).
+
+Verify on the card: `PharmacyCardWidget`'s button calls `PharmacyCubit.verifyPharmacy(pharmacy)`. `PharmacyState.verifyingId` puts the loader on that card only (`context.select`); `actionError` (kept separate from the list `error`) is shown in a SnackBar by `PharmacyManagementScreen`'s `BlocConsumer`. Success → silent `_load()` refetch.
+
+Data layer: `PharmasyRemoteDataSource.verifyPharmacy/unverifyPharmacy` use `callApiNoData`. The response `{message, success, data: bool}` only echoes the new flag, so nothing is parsed. The endpoints are `AppEndPoints.verifyPharmacy/unverifyPharmacy`, with the query key `ApiParamConstants.pharmacyId`. **Both are PUT**: POST returns 405.
+
+`PharmacyFilter.matches` now compares against `PharmacyStatus.x.name` (it compared a `String` to the enum value, which was always false).
+
+Pharmacy details "Documents Uploaded" section: each document is a `PharmacyDocumentWidget` (`pharmacy_details/widgets/pharmacy_document_widget.dart`): file icon, `name`, and a fixed-width `AppButtonWidget` "View" (`onViewPressed`). The button gets an explicit width and must not be wrapped in `Expanded`.
 
 ## Dependency injection
 `HomeRemoteDataSourceImpl`, `HomeRepositoryImpl`, `GetHomeSummaryUseCase`, `HomeTabCubit`, `RateRemoteDataSourceImpl`, `RateRepositoryImpl`, `GetRatesUseCase`, and `RateCubit` are all registered via Injectable annotations (`@LazySingleton(as: Interface)` / `@injectable`) — nothing in this module is manually registered in `core/di/di.dart`. Wiring is generated into `di.config.dart` by `build_runner` (gitignored — regenerate locally with `dart run build_runner build --delete-conflicting-outputs`).
